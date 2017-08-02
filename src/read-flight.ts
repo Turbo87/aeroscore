@@ -1,7 +1,7 @@
-import fs = require('fs');
-
 import Point from './geo/point';
-import IGCParser from './igc/parser';
+
+import fs = require('fs');
+import IGCParser = require('igc-parser');
 
 export interface Fix {
   time: number;
