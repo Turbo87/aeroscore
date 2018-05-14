@@ -24,7 +24,7 @@
     "cheap-ruler": "^2.5.0",
     "flight-recorder-manufacturers": "^1.0.1",
     "igc-filename-parser": "^0.1.1",
-    "igc-parser": "^0.1.0",
+    "igc-parser": "^0.3.0",
     "monotone-convex-hull-2d": "^1.0.1",
     "tiny-emitter": "^2.0.1",
     "xml-js": "^1.3.2"
