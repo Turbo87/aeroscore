@@ -108,9 +108,9 @@
   dependencies:
     "@types/babel-types" "*"
 
-"@types/geojson@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.2.tgz#b02d10ab028e2928ac592a051aaa4981a1941d03"
+"@types/geojson@^7946.0.3":
+  version "7946.0.3"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.3.tgz#e5791534ab0acfb2b3a39b713966cfcee85d469f"
 
 "@types/jest@^20.0.3":
   version "20.0.3"
