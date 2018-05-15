@@ -39,7 +39,7 @@
     "temp-write": "^3.3.0",
     "ts-jest": "^20.0.7",
     "tslint": "^5.5.0",
-    "typescript": "^2.4.1",
+    "typescript": "^2.8.3",
     "ws": "^3.1.0"
   },
   "jest": {
