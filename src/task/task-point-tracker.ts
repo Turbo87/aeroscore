@@ -11,7 +11,7 @@ const convexHull = require('monotone-convex-hull-2d');
 
 export class AreaVisit {
   enter: Fix;
-  exit: Fix | null;
+  exit: Fix | null = null;
 
   fixes: Fix[] = [];
 
