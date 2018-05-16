@@ -126,9 +126,9 @@
   version "7946.0.3"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.3.tgz#e5791534ab0acfb2b3a39b713966cfcee85d469f"
 
-"@types/jest@^20.0.3":
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.3.tgz#2b7d14d534061e32653509d747d2fc70154306dd"
+"@types/jest@^22.2.3":
+  version "22.2.3"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
 
 "@types/node@^6.0.83":
   version "6.0.83"
