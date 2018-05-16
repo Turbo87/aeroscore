@@ -7,9 +7,9 @@ export interface GliderTrackerClientOptions {
 }
 
 export default class GliderTrackerClient {
-  onClose: () => void;
-  onTrack: (id: string, fixes: any[]) => void;
-  onRecord: (record: any) => void;
+  onClose: (() => void) | undefined;
+  onTrack: ((id: string, fixes: any[]) => void) | undefined;
+  onRecord: ((record: any) => void) | undefined;
 
   private ws: any;
   private readonly parser = new aprs.APRSParser();
