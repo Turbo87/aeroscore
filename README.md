@@ -84,6 +84,75 @@ Live-scoring using remote filter and task files directly from GliderTracker.org 
 ts-node examples/live-scoring.ts "http://glidertracker.org/#tsk=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/task&lst=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/filter"
 ```
 
+Usage
+------------------------------------------------------------------------------
+
+## Single flights
+
+- Show the detected task points on a map
+  ```bash
+   ts-node examples/task-point-tracker.ts TASK_PATH IGC_PATH
+    ```
+
+- Show a map with the flight path, task and all detected area intersections.
+  ```bash
+  ts-node examples/show-area-intersections.ts TASK_PATH IGC_PATH
+  ```
+
+- Show a map with the flight path and task.
+  ```bash
+  ts-node examples/show-flights.ts TASK_PATH IGC_PATH
+  ```
+
+- Print the detected task points and times as well as the final speed and distance
+  ```bash
+  ts-node examples/analyze-flight.ts TASK_PATH IGC_PATH
+  ```
+
+- Show a map with the flight path, task and the optimized AAT path
+  ```bash
+  ts-node examples/show-aat-path.ts TASK_PATH IGC_PATH
+  ```
+
+- Show the given task on a map
+  ```bash
+  ts-node examples/show-task.ts TASK_PATH
+    ```
+
+## Scoring a competition
+
+- Calculate the ranking for a given competition day.
+  Expected folder structure:
+  - `./task.tsk` - task in xcsoar task format
+  - `./filter.csv` - list of pilots, glider types, handicap, etc.
+  - `./[A-Z]{1,3}_.*.igc` - The flight logs, name prefixed with the CN
+
+  ```bash
+  ts-node examples/calc-ranking.ts FOLDER
+  ```
+
+- Print the list of start and landing times for a given competition day.
+  ```bash
+  ts-node examples/calc-flight-times.ts FOLDER
+  ```
+
+## Live tracking and scoring
+
+- Calculate the live scoring for the given task and pilot/glider list using GliderTracker.
+  ```bash
+  ts-node examples/live-scoring.ts TASK_PATH CSV_PATH
+  ```
+
+
+- Show the OGN traffic for a given competition
+  ```bash
+  ts-node examples/show-ogn-traffic.ts CSV_PATH
+  ```
+
+- Show track for a given ID
+  ```bash
+  ts-node examples/glidertracker-history.ts FLARM_ID [YYYY-MM-DD]
+  ```
 
 License
 ------------------------------------------------------------------------------
