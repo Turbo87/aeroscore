@@ -92,19 +92,38 @@ client.onRecord = function(record) {
   }
 };
 
+function compareResults(a: any, b: any) {
+  if (a.speed !== undefined && b.speed === undefined) return -1;
+  if (a.speed === undefined && b.speed !== undefined) return 1;
+  if (a.speed !== undefined && b.speed !== undefined) {
+    if (a.speed > b.speed) return -1;
+    if (a.speed < b.speed) return 1;
+  } else {
+    if (a.distance > b.distance) return -1;
+    if (a.distance < b.distance) return 1;
+  }
+  return 0;
+}
+
 setInterval(() => {
-  let lines = Object.keys(flarmIds).map(flarmId => {
+  let results = Object.keys(flarmIds).map(flarmId => {
     let flarmMapping = flarmIds[flarmId];
     let fixes = fixesById.get(flarmId)!;
 
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
     let result = solver.result;
+    result.cn = flarmMapping.cn;
+    return result;
+  });
 
+  results.sort(compareResults);
+
+  let lines = results.map(result => {
     let distance = result.distance !== undefined ? `${(result.distance / 1000).toFixed(1)} km` : '';
     let speed = result.speed !== undefined ? `${(result.speed).toFixed(2)} km/h` : '';
 
-    return `${flarmMapping.cn}\t${distance}\t${speed}`;
+    return `${result.cn}\t${distance}\t${speed}`;
   });
 
   logUpdate(`${new Date().toISOString()}\n\n${lines.join('\n')}`);
