@@ -41,8 +41,7 @@ function connect() {
   client.connect().then(() => {
     client.setView(task.bbox);
 
-    for (let flarmId of Object.keys(flarmIds)) {
-      let id = flarmId.replace(/^FLR/, '06');
+    for (let id of Object.keys(flarmIds)) {
       client.requestTrack(id, from, to);
     }
   });
@@ -56,9 +55,7 @@ client.onClose = function() {
 };
 
 client.onTrack = function(id, _fixes) {
-  let flarmId = id.replace(/^06/, 'FLR');
-
-  let fixes = fixesById.get(flarmId);
+  let fixes = fixesById.get(id);
   if (fixes) {
     fixes.push(..._fixes.map(fix => ({
       time: fix.time,
@@ -70,11 +67,19 @@ client.onTrack = function(id, _fixes) {
 };
 
 client.onRecord = function(record) {
-  let flarmMapping = flarmIds[record.from.call];
+  if (!record.data.comment)
+    return;
+
+  let match = record.data.comment.match(/id([0-9a-f]{8})/i);
+  if (!match)
+    return;
+
+  let id = match[1];
+  let flarmMapping = flarmIds[id];
   if (!flarmMapping)
     return;
 
-  let fixes = fixesById.get(record.from.call);
+  let fixes = fixesById.get(id);
 
   let data = record.data;
   if (fixes && data) {
