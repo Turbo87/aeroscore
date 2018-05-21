@@ -109,11 +109,13 @@ setInterval(() => {
   let results = Object.keys(flarmIds).map(flarmId => {
     let flarmMapping = flarmIds[flarmId];
     let fixes = fixesById.get(flarmId)!;
+    let lastFix = fixes[fixes.length - 1];
 
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
     let result = solver.result;
     result.cn = flarmMapping.cn;
+    result.altitude = lastFix && lastFix.altitude;
     return result;
   });
 
@@ -121,9 +123,10 @@ setInterval(() => {
 
   let lines = results.map(result => {
     let distance = result.distance !== undefined ? `${(result.distance / 1000).toFixed(1)} km` : '';
+    let altitude = result.altitude !== undefined && result.altitude !== null ? `${result.altitude.toFixed(0)} m` : '';
     let speed = result.speed !== undefined ? `${(result.speed).toFixed(2)} km/h` : '';
 
-    return `${result.cn}\t${distance}\t${speed}`;
+    return `${result.cn}\t${speed || altitude}\t${distance}`;
   });
 
   logUpdate(`${new Date().toISOString()}\n\n${lines.join('\n')}`);
