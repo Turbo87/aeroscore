@@ -1,5 +1,5 @@
 import * as turf from '@turf/helpers';
-import sector = require('@turf/sector');
+import sector from '@turf/sector';
 import cheapRuler = require('cheap-ruler');
 import {Feature, Polygon} from 'geojson';
 
@@ -27,7 +27,7 @@ export default class Sector extends AreaShape {
       radius / 1000,
       direction - angle / 2,
       direction + angle / 2,
-      Math.max(Math.round(angle), 64),
+      { steps: Math.max(Math.round(angle), 64) },
     );
 
     this._cylinder = new Cylinder(center, radius);

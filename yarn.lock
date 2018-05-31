@@ -50,12 +50,26 @@
     "@turf/destination" "^4.5.2"
     "@turf/helpers" "^4.5.2"
 
+"@turf/circle@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@turf/circle/-/circle-5.1.5.tgz#9b1577835508ab52fb1c10b2a5065cba2b87b6a5"
+  dependencies:
+    "@turf/destination" "^5.1.5"
+    "@turf/helpers" "^5.1.5"
+
 "@turf/destination@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-4.5.2.tgz#ecbabf4b37d5c94dc5067ce3972d272d3c53556d"
   dependencies:
     "@turf/helpers" "^4.5.2"
     "@turf/invariant" "^4.5.2"
+
+"@turf/destination@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-5.1.5.tgz#ed35381bdce83bbddcbd07a2e2bce2bddffbcc26"
+  dependencies:
+    "@turf/helpers" "^5.1.5"
+    "@turf/invariant" "^5.1.5"
 
 "@turf/helpers@6.x", "@turf/helpers@^6.1.4":
   version "6.1.4"
@@ -64,6 +78,10 @@
 "@turf/helpers@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-4.5.2.tgz#6fc6772a7b301f277b49732925c354c7fb85d1df"
+
+"@turf/helpers@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-5.1.5.tgz#153405227ab933d004a5bb9641a9ed999fcbe0cf"
 
 "@turf/invariant@6.x":
   version "6.0.1"
@@ -75,13 +93,19 @@
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-4.5.2.tgz#0642ee1e6bca531be3f6f9292d590155f2fb9604"
 
-"@turf/line-arc@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/line-arc/-/line-arc-4.5.2.tgz#5593f343305c6d8d6c1fc81ebe9b61b173c6738c"
+"@turf/invariant@^5.1.5":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-5.2.0.tgz#f0150ff7290b38577b73d088b7932c1ee0aa90a7"
   dependencies:
-    "@turf/circle" "^4.5.2"
-    "@turf/destination" "^4.5.2"
-    "@turf/helpers" "^4.5.2"
+    "@turf/helpers" "^5.1.5"
+
+"@turf/line-arc@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@turf/line-arc/-/line-arc-5.1.5.tgz#0078a7447835a12ae414a211f9a64d1186150e15"
+  dependencies:
+    "@turf/circle" "^5.1.5"
+    "@turf/destination" "^5.1.5"
+    "@turf/helpers" "^5.1.5"
 
 "@turf/meta@6.x":
   version "6.0.2"
@@ -89,19 +113,21 @@
   dependencies:
     "@turf/helpers" "6.x"
 
-"@turf/meta@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-4.5.2.tgz#8450fc442d2a59494251a5a52ae520017e2dcf0d"
-
-"@turf/sector@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/sector/-/sector-4.5.2.tgz#7a31aa2851661ca058749bde79fb2d3ebf9e32da"
+"@turf/meta@^5.1.5":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-5.2.0.tgz#3b1ad485ee0c3b0b1775132a32c384d53e4ba53d"
   dependencies:
-    "@turf/circle" "^4.5.2"
-    "@turf/helpers" "^4.5.2"
-    "@turf/invariant" "^4.5.2"
-    "@turf/line-arc" "^4.5.2"
-    "@turf/meta" "^4.5.2"
+    "@turf/helpers" "^5.1.5"
+
+"@turf/sector@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@turf/sector/-/sector-5.1.5.tgz#ac2bb94c13edd6034f6fdc2b67008135d20f5e07"
+  dependencies:
+    "@turf/circle" "^5.1.5"
+    "@turf/helpers" "^5.1.5"
+    "@turf/invariant" "^5.1.5"
+    "@turf/line-arc" "^5.1.5"
+    "@turf/meta" "^5.1.5"
 
 "@turf/union@^4.5.2":
   version "4.5.2"
