@@ -16,7 +16,7 @@
     "@turf/bearing": "^4.5.2",
     "@turf/center": "^6.0.1",
     "@turf/circle": "^4.5.2",
-    "@turf/helpers": "^4.5.2",
+    "@turf/helpers": "^6.1.4",
     "@turf/inside": "^4.5.2",
     "@turf/sector": "^4.5.2",
     "@turf/union": "^4.5.2",

@@ -1,4 +1,4 @@
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 import cheapRuler = require('cheap-ruler');
 import {Feature, LineString} from 'geojson';
 

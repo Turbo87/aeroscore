@@ -1,4 +1,4 @@
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 import GliderTrackerClient from '../src/glidertracker/client';
 import {viewGeoJSON} from './utils/view-geojson';
 

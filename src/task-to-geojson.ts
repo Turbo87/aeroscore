@@ -1,4 +1,4 @@
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 import Task from './task/task';
 
 export function taskToGeoJSON(task: Task) {

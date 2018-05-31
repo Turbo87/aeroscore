@@ -1,6 +1,6 @@
 import turfBBox = require('@turf/bbox');
 import turfCenter from '@turf/center';
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 import cheapRuler = require('cheap-ruler');
 
 import Point from '../geo/point';

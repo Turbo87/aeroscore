@@ -1,4 +1,4 @@
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 
 import {interpolatePoint} from '../src/geo/interpolate-point';
 import Point from '../src/geo/point';

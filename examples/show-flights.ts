@@ -1,4 +1,4 @@
-import turf = require('@turf/helpers');
+import * as turf from '@turf/helpers';
 
 import {analyzeFlight} from '../src/analyze-flight';
 import {readFlight} from '../src/read-flight';
