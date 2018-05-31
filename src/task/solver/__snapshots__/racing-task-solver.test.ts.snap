@@ -3,7 +3,7 @@
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" can handle outlandings 1`] = `
 Object {
   "completed": false,
-  "distance": 94373.82458252949,
+  "distance": 94373.825,
   "path": Array [
     StartEvent {
       "point": lon 6.9179704 lat 51.1276447,
@@ -31,7 +31,7 @@ Object {
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns a result 1`] = `
 Object {
   "completed": true,
-  "distance": 136420.85415876907,
+  "distance": 136420.85,
   "path": Array [
     StartEvent {
       "point": lon 6.9313498 lat 51.0847306,
@@ -62,15 +62,15 @@ Object {
       "type": "finish",
     },
   ],
-  "speed": 75.62583148774199,
-  "time": 6494.0122351074215,
+  "speed": 75.625831,
+  "time": 6494.0122,
 }
 `;
 
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns an intermediate result 1`] = `
 Object {
   "completed": false,
-  "distance": 52735.15992428783,
+  "distance": 52735.160,
   "path": Array [
     StartEvent {
       "point": lon 6.9147855 lat 51.1378604,
@@ -92,7 +92,7 @@ Object {
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns an intermediate result 2`] = `
 Object {
   "completed": true,
-  "distance": 136420.85415876907,
+  "distance": 136420.85,
   "path": Array [
     StartEvent {
       "point": lon 6.9313498 lat 51.0847306,
@@ -123,7 +123,7 @@ Object {
       "type": "finish",
     },
   ],
-  "speed": 75.62583148774199,
-  "time": 6494.0122351074215,
+  "speed": 75.625831,
+  "time": 6494.0122,
 }
 `;
