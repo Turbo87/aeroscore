@@ -1,4 +1,4 @@
-import union = require('@turf/union');
+import union from '@turf/union';
 import {Feature, Polygon} from 'geojson';
 
 import Point from '../../geo/point';

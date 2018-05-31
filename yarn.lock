@@ -130,11 +130,13 @@
     "@turf/line-arc" "^5.1.5"
     "@turf/meta" "^5.1.5"
 
-"@turf/union@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/union/-/union-4.5.2.tgz#a5324a26b112c4033791013e0fc366ec0b11ef56"
+"@turf/union@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@turf/union/-/union-6.0.2.tgz#6821d7842f048cfcfe1ae3b7c36fec73bd7e89cd"
   dependencies:
-    jsts "1.3.0"
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
+    martinez-polygon-clipping "*"
 
 "@types/geojson@^7946.0.3":
   version "7946.0.3"
@@ -2390,10 +2392,6 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-jsts@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/jsts/-/jsts-1.3.0.tgz#e93a76f97ac9bda7d4625d9d6470f0d60ac80e45"
-
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -2514,6 +2512,13 @@ map-visit@^1.0.0:
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
   dependencies:
     object-visit "^1.0.0"
+
+martinez-polygon-clipping@*:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/martinez-polygon-clipping/-/martinez-polygon-clipping-0.4.1.tgz#b34ec0440661f094173ad7e102672db31138df39"
+  dependencies:
+    splaytree "^0.1.4"
+    tinyqueue "^1.2.0"
 
 mem@^1.1.0:
   version "1.1.0"
@@ -3443,6 +3448,10 @@ spdx-license-ids@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-1.2.2.tgz#c9df7a3424594ade6bd11900d596696dc06bac57"
 
+splaytree@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/splaytree/-/splaytree-0.1.4.tgz#fc35475248edcc29d4938c9b67e43c6b7e55a659"
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -3617,6 +3626,10 @@ throat@^4.0.0:
 tiny-emitter@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
+
+tinyqueue@^1.2.0:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/tinyqueue/-/tinyqueue-1.2.3.tgz#b6a61de23060584da29f82362e45df1ec7353f3d"
 
 tmpl@1.0.x:
   version "1.0.4"
