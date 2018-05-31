@@ -1,4 +1,4 @@
-import inside = require('@turf/inside');
+import inside from '@turf/boolean-point-in-polygon';
 import {Feature, Polygon} from 'geojson';
 
 import {findIntersections} from '../../geo/find-intersections';
