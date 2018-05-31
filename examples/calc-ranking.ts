@@ -9,7 +9,7 @@ import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 const logUpdate = require('log-update');
 
 if (process.argv.length < 4) {
-  console.log('Usage: ts-node examples/analyze-flight.ts TASK_PATH IGC_FOLDER');
+  console.log('Usage: ts-node examples/calc-ranking.ts TASK_PATH IGC_FOLDER');
   process.exit(1);
 }
 
