@@ -28,7 +28,7 @@ export default class Sector extends AreaShape {
       direction - angle / 2,
       direction + angle / 2,
       { steps: Math.max(Math.round(angle), 64) },
-    );
+    ) as Feature<Polygon>;
 
     this._cylinder = new Cylinder(center, radius);
     this._ruler = cheapRuler(center[1]);

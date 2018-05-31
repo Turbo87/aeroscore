@@ -1,5 +1,5 @@
 import turfBBox from '@turf/bbox';
-import turfCenter from '@turf/center';
+const turfCenter = require('@turf/center').default;
 import * as turf from '@turf/helpers';
 import cheapRuler = require('cheap-ruler');
 
@@ -36,7 +36,7 @@ export default class Task {
     this._ruler = cheapRuler(center.geometry.coordinates[1]);
 
     // bounding box of the turnpoint coordinates with 100km buffer
-    this.bbox = this._ruler.bufferBBox(turfBBox(feature), 100);
+    this.bbox = this._ruler.bufferBBox(turfBBox(feature) as [number, number, number, number], 100);
 
     this.legs = [];
     for (let i = 1; i < points.length; i++) {
