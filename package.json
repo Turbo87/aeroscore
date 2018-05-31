@@ -51,6 +51,9 @@
       "js",
       "json"
     ],
+    "snapshotSerializers": [
+      "<rootDir>/tests/coordinate-serializer.js"
+    ],
     "testRegex": "(\\.(test|spec))\\.(ts|js)$",
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
