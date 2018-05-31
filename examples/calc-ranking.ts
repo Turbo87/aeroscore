@@ -50,7 +50,9 @@ let times = Object.keys(flights).map(key => flights[key]).map(flight => ({
 let minTime = Math.min(...times.map(it => it.min)) / 1000;
 let maxTime = Math.max(...times.map(it => it.max)) / 1000;
 
-for (let time = minTime; time <= maxTime; time++) {
+let time = minTime;
+
+function tick() {
   callsigns.forEach(callsign => {
     let index = indexes[callsign];
     let flight = flights[callsign];
@@ -92,7 +94,15 @@ for (let time = minTime; time <= maxTime; time++) {
 
   let output = `Time: ${formatTime(time * 1000)}\n\n${lines.join('\n')}`;
   logUpdate(output);
+
+  time += 10;
+
+  if (time <= maxTime) {
+    setTimeout(tick, 0);
+  }
 }
+
+setTimeout(tick, 0);
 
 function compareResults(a: any, b: any) {
   if (a.speed !== undefined && b.speed !== undefined)
