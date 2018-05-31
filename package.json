@@ -36,7 +36,7 @@
     "jest": "^23.1.0",
     "log-update": "^2.3.0",
     "opn": "^5.3.0",
-    "temp-write": "^3.3.0",
+    "temp-write": "^3.4.0",
     "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
