@@ -23,11 +23,12 @@
     "@turf/helpers" "6.x"
     "@turf/meta" "6.x"
 
-"@turf/bearing@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-4.5.2.tgz#b9da6c7efe4faf81852ed8a3de3c6cb2d3910fe7"
+"@turf/bearing@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-6.0.1.tgz#8da5d17092e571f170cde7bfb2e5b0d74923c92d"
   dependencies:
-    "@turf/invariant" "^4.5.2"
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
 
 "@turf/boolean-point-in-polygon@^6.0.1":
   version "6.0.1"

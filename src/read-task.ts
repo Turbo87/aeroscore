@@ -1,4 +1,4 @@
-import bearing = require('@turf/bearing');
+import bearing from '@turf/bearing';
 import fs = require('fs');
 
 import Point from './geo/point';
