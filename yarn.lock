@@ -44,13 +44,6 @@
     "@turf/bbox" "6.x"
     "@turf/helpers" "6.x"
 
-"@turf/circle@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/circle/-/circle-4.5.2.tgz#d5bd1b18162b93edbb74a127708818487387f42c"
-  dependencies:
-    "@turf/destination" "^4.5.2"
-    "@turf/helpers" "^4.5.2"
-
 "@turf/circle@^5.1.5":
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/@turf/circle/-/circle-5.1.5.tgz#9b1577835508ab52fb1c10b2a5065cba2b87b6a5"
@@ -58,12 +51,19 @@
     "@turf/destination" "^5.1.5"
     "@turf/helpers" "^5.1.5"
 
-"@turf/destination@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-4.5.2.tgz#ecbabf4b37d5c94dc5067ce3972d272d3c53556d"
+"@turf/circle@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/circle/-/circle-6.0.1.tgz#0ab72083373ae3c76b700c17a504ab1b5c0910b9"
   dependencies:
-    "@turf/helpers" "^4.5.2"
-    "@turf/invariant" "^4.5.2"
+    "@turf/destination" "6.x"
+    "@turf/helpers" "6.x"
+
+"@turf/destination@6.x":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-6.0.1.tgz#5275887fa96ec463f44864a2c17f0b712361794a"
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
 
 "@turf/destination@^5.1.5":
   version "5.1.5"
@@ -76,10 +76,6 @@
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.1.4.tgz#d6fd7ebe6782dd9c87dca5559bda5c48ae4c3836"
 
-"@turf/helpers@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-4.5.2.tgz#6fc6772a7b301f277b49732925c354c7fb85d1df"
-
 "@turf/helpers@^5.1.5":
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-5.1.5.tgz#153405227ab933d004a5bb9641a9ed999fcbe0cf"
@@ -89,10 +85,6 @@
   resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-6.0.1.tgz#45581b41f82d91b682cef427e897c840d1741757"
   dependencies:
     "@turf/helpers" "6.x"
-
-"@turf/invariant@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-4.5.2.tgz#0642ee1e6bca531be3f6f9292d590155f2fb9604"
 
 "@turf/invariant@^5.1.5":
   version "5.2.0"

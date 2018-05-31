@@ -1,6 +1,6 @@
 import {Feature, Polygon} from 'geojson';
 
-import circle = require('@turf/circle');
+import circle from '@turf/circle';
 import cheapRuler = require('cheap-ruler');
 
 import Point from '../../geo/point';
