@@ -16,6 +16,13 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@turf/bbox@6.x":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-6.0.1.tgz#b966075771475940ee1c16be2a12cf389e6e923a"
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/meta" "6.x"
+
 "@turf/bbox@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-4.5.2.tgz#1a6c6e7d0ea03b26cbc14d46e6df408ae3ddf87a"
@@ -28,12 +35,12 @@
   dependencies:
     "@turf/invariant" "^4.5.2"
 
-"@turf/center@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@turf/center/-/center-4.5.2.tgz#f2206e3f85060cf50f5d3fbb24479c15c134f956"
+"@turf/center@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@turf/center/-/center-6.0.1.tgz#40a17d0a170df5bba09ad93e133b904d8eb14601"
   dependencies:
-    "@turf/bbox" "^4.5.2"
-    "@turf/helpers" "^4.5.2"
+    "@turf/bbox" "6.x"
+    "@turf/helpers" "6.x"
 
 "@turf/circle@^4.5.2":
   version "4.5.2"
@@ -48,6 +55,10 @@
   dependencies:
     "@turf/helpers" "^4.5.2"
     "@turf/invariant" "^4.5.2"
+
+"@turf/helpers@6.x":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.1.4.tgz#d6fd7ebe6782dd9c87dca5559bda5c48ae4c3836"
 
 "@turf/helpers@^4.5.2":
   version "4.5.2"
@@ -70,6 +81,12 @@
     "@turf/circle" "^4.5.2"
     "@turf/destination" "^4.5.2"
     "@turf/helpers" "^4.5.2"
+
+"@turf/meta@6.x":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-6.0.2.tgz#eb92951126d24a613ac1b7b99d733fcc20fd30cf"
+  dependencies:
+    "@turf/helpers" "6.x"
 
 "@turf/meta@^4.5.2":
   version "4.5.2"

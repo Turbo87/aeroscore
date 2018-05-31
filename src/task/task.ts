@@ -1,5 +1,5 @@
 import turfBBox = require('@turf/bbox');
-import turfCenter = require('@turf/center');
+import turfCenter from '@turf/center';
 import turf = require('@turf/helpers');
 import cheapRuler = require('cheap-ruler');
 
