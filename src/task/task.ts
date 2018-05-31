@@ -1,4 +1,4 @@
-import turfBBox = require('@turf/bbox');
+import turfBBox from '@turf/bbox';
 import turfCenter from '@turf/center';
 import * as turf from '@turf/helpers';
 import cheapRuler = require('cheap-ruler');
