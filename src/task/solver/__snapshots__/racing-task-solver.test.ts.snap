@@ -7,19 +7,19 @@ Object {
   "path": Array [
     StartEvent {
       "point": lon 6.9179704 lat 51.1276447,
-      "time": 1500300414931.921,
+      "time": 2017-07-17T14:06:54.931Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
       "point": lon 6.2812555 lat 50.9890756,
-      "time": 1500306179779.143,
+      "time": 2017-07-17T15:42:59.779Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
       "point": lon 6.1937559 lat 51.1722765,
-      "time": 1500308464911.7659,
+      "time": 2017-07-17T16:21:04.911Z,
       "type": "turn",
     },
   ],
@@ -35,30 +35,30 @@ Object {
   "path": Array [
     StartEvent {
       "point": lon 6.9313498 lat 51.0847306,
-      "time": 1500303056825.019,
+      "time": 2017-07-17T14:50:56.825Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
       "point": lon 6.2829187 lat 50.9964595,
-      "time": 1500305066358.2283,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
       "point": lon 6.1941840 lat 51.1723441,
-      "time": 1500306711548.8186,
+      "time": 2017-07-17T15:51:51.548Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 3,
       "point": lon 6.6075001 lat 50.9694915,
-      "time": 1500308404130.9412,
+      "time": 2017-07-17T16:20:04.130Z,
       "type": "turn",
     },
     FinishEvent {
       "point": lon 7.0084235 lat 51.0985126,
-      "time": 1500309550837.2542,
+      "time": 2017-07-17T16:39:10.837Z,
       "type": "finish",
     },
   ],
@@ -74,13 +74,13 @@ Object {
   "path": Array [
     StartEvent {
       "point": lon 6.9147855 lat 51.1378604,
-      "time": 1500301028833.1543,
+      "time": 2017-07-17T14:17:08.833Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
       "point": lon 6.2829187 lat 50.9964595,
-      "time": 1500305066358.2283,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
   ],
@@ -96,30 +96,30 @@ Object {
   "path": Array [
     StartEvent {
       "point": lon 6.9313498 lat 51.0847306,
-      "time": 1500303056825.019,
+      "time": 2017-07-17T14:50:56.825Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
       "point": lon 6.2829187 lat 50.9964595,
-      "time": 1500305066358.2283,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
       "point": lon 6.1941840 lat 51.1723441,
-      "time": 1500306711548.8186,
+      "time": 2017-07-17T15:51:51.548Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 3,
       "point": lon 6.6075001 lat 50.9694915,
-      "time": 1500308404130.9412,
+      "time": 2017-07-17T16:20:04.130Z,
       "type": "turn",
     },
     FinishEvent {
       "point": lon 7.0084235 lat 51.0985126,
-      "time": 1500309550837.2542,
+      "time": 2017-07-17T16:39:10.837Z,
       "type": "finish",
     },
   ],

@@ -4,7 +4,7 @@ exports[`readFlight() reads "SW_77flqgg1" flight log correctly 1`] = `
 Object {
   "altitude": 44,
   "coordinate": lon 7.0100000 lat 51.0110833,
-  "time": 1500111903000,
+  "time": 2017-07-15T09:45:03.000Z,
   "valid": true,
 }
 `;
@@ -13,7 +13,7 @@ exports[`readFlight() reads "SW_77flqgg1" flight log correctly 2`] = `
 Object {
   "altitude": 1168,
   "coordinate": lon 6.5283500 lat 50.8661500,
-  "time": 1500118283000,
+  "time": 2017-07-15T11:31:23.000Z,
   "valid": true,
 }
 `;
@@ -22,7 +22,7 @@ exports[`readFlight() reads "SW_77flqgg1" flight log correctly 3`] = `
 Object {
   "altitude": 671,
   "coordinate": lon 7.0655833 lat 51.0990833,
-  "time": 1500128791000,
+  "time": 2017-07-15T14:26:31.000Z,
   "valid": true,
 }
 `;
