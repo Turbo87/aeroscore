@@ -1,4 +1,4 @@
-import {xml2js} from 'xml-js';
+import {Element, xml2js} from 'xml-js';
 
 export interface XCSoarTask {
   type: string;
@@ -30,8 +30,8 @@ export interface XCSoarObservationZone {
 }
 
 export function read(xml: string): XCSoarTask {
-  let root = xml2js(xml);
-  let taskElement = root.elements.find((it: any) => it.name === 'Task');
+  let root = xml2js(xml) as Element;
+  let taskElement = root.elements!.find((it: any) => it.name === 'Task');
   return convertTask(taskElement);
 }
 

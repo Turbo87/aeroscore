@@ -1,3 +1,5 @@
+import {BBox} from 'cheap-ruler';
+
 import Point from '../src/geo/point';
 import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
@@ -39,7 +41,7 @@ let client = new GliderTrackerClient({ WebSocket: require('ws') });
 
 function connect() {
   client.connect().then(() => {
-    client.setView(task.bbox);
+    client.setView(task.bbox as BBox);
 
     for (let id of Object.keys(flarmIds)) {
       client.requestTrack(id, from, to);
