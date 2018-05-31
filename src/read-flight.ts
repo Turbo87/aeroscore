@@ -11,7 +11,7 @@ export interface Fix {
 }
 
 export function readFlightFromString(str: string): Fix[] {
-  return IGCParser.parse(str).fixes.map(fix => ({
+  return IGCParser.parse(str, { lenient: true }).fixes.map(fix => ({
     time: fix.timestamp,
     coordinate: [fix.longitude, fix.latitude] as Point,
     valid: fix.valid,
