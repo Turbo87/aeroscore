@@ -3,32 +3,23 @@
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" can handle outlandings 1`] = `
 Object {
   "completed": false,
-  "distance": 94373.82458252949,
+  "distance": 94373.825,
   "path": Array [
     StartEvent {
-      "point": Array [
-        6.917970423726742,
-        51.12764467984819,
-      ],
-      "time": 1500300414931.921,
+      "point": lon 6.9179704 lat 51.1276447,
+      "time": 2017-07-17T14:06:54.931Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
-      "point": Array [
-        6.281255521419947,
-        50.98907556181277,
-      ],
-      "time": 1500306179779.143,
+      "point": lon 6.2812555 lat 50.9890756,
+      "time": 2017-07-17T15:42:59.779Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
-      "point": Array [
-        6.193755882287799,
-        51.17227647084881,
-      ],
-      "time": 1500308464911.7659,
+      "point": lon 6.1937559 lat 51.1722765,
+      "time": 2017-07-17T16:21:04.911Z,
       "type": "turn",
     },
   ],
@@ -40,77 +31,56 @@ Object {
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns a result 1`] = `
 Object {
   "completed": true,
-  "distance": 136420.85415876907,
+  "distance": 136420.85,
   "path": Array [
     StartEvent {
-      "point": Array [
-        6.931349782770249,
-        51.08473062172237,
-      ],
-      "time": 1500303056825.019,
+      "point": lon 6.9313498 lat 51.0847306,
+      "time": 2017-07-17T14:50:56.825Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
-      "point": Array [
-        6.282918718345648,
-        50.99645952012375,
-      ],
-      "time": 1500305066358.2283,
+      "point": lon 6.2829187 lat 50.9964595,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
-      "point": Array [
-        6.19418395011852,
-        51.17234406494242,
-      ],
-      "time": 1500306711548.8186,
+      "point": lon 6.1941840 lat 51.1723441,
+      "time": 2017-07-17T15:51:51.548Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 3,
-      "point": Array [
-        6.607500097039638,
-        50.96949152110721,
-      ],
-      "time": 1500308404130.9412,
+      "point": lon 6.6075001 lat 50.9694915,
+      "time": 2017-07-17T16:20:04.130Z,
       "type": "turn",
     },
     FinishEvent {
-      "point": Array [
-        7.008423480016633,
-        51.098512598025316,
-      ],
-      "time": 1500309550837.2542,
+      "point": lon 7.0084235 lat 51.0985126,
+      "time": 2017-07-17T16:39:10.837Z,
       "type": "finish",
     },
   ],
-  "speed": 75.62583148774199,
-  "time": 6494.0122351074215,
+  "speed": 75.625831,
+  "time": 6494.0122,
 }
 `;
 
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns an intermediate result 1`] = `
 Object {
   "completed": false,
-  "distance": 52735.15992428783,
+  "distance": 52735.160,
   "path": Array [
     StartEvent {
-      "point": Array [
-        6.914785463652347,
-        51.13786038310547,
-      ],
-      "time": 1500301028833.1543,
+      "point": lon 6.9147855 lat 51.1378604,
+      "time": 2017-07-17T14:17:08.833Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
-      "point": Array [
-        6.282918718345648,
-        50.99645952012375,
-      ],
-      "time": 1500305066358.2283,
+      "point": lon 6.2829187 lat 50.9964595,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
   ],
@@ -122,53 +92,38 @@ Object {
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" returns an intermediate result 2`] = `
 Object {
   "completed": true,
-  "distance": 136420.85415876907,
+  "distance": 136420.85,
   "path": Array [
     StartEvent {
-      "point": Array [
-        6.931349782770249,
-        51.08473062172237,
-      ],
-      "time": 1500303056825.019,
+      "point": lon 6.9313498 lat 51.0847306,
+      "time": 2017-07-17T14:50:56.825Z,
       "type": "start",
     },
     TurnEvent {
       "num": 1,
-      "point": Array [
-        6.282918718345648,
-        50.99645952012375,
-      ],
-      "time": 1500305066358.2283,
+      "point": lon 6.2829187 lat 50.9964595,
+      "time": 2017-07-17T15:24:26.358Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 2,
-      "point": Array [
-        6.19418395011852,
-        51.17234406494242,
-      ],
-      "time": 1500306711548.8186,
+      "point": lon 6.1941840 lat 51.1723441,
+      "time": 2017-07-17T15:51:51.548Z,
       "type": "turn",
     },
     TurnEvent {
       "num": 3,
-      "point": Array [
-        6.607500097039638,
-        50.96949152110721,
-      ],
-      "time": 1500308404130.9412,
+      "point": lon 6.6075001 lat 50.9694915,
+      "time": 2017-07-17T16:20:04.130Z,
       "type": "turn",
     },
     FinishEvent {
-      "point": Array [
-        7.008423480016633,
-        51.098512598025316,
-      ],
-      "time": 1500309550837.2542,
+      "point": lon 7.0084235 lat 51.0985126,
+      "time": 2017-07-17T16:39:10.837Z,
       "type": "finish",
     },
   ],
-  "speed": 75.62583148774199,
-  "time": 6494.0122351074215,
+  "speed": 75.625831,
+  "time": 6494.0122,
 }
 `;
