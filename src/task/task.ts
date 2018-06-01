@@ -12,6 +12,7 @@ import Line from './shapes/line';
 import {FinishPoint, StartPoint} from './task-points';
 
 export default class Task {
+  /** All turnpoints including start and finish */
   points: Turnpoint[];
   options: TaskOptions;
 
