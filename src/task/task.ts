@@ -1,5 +1,6 @@
 import turfBBox from '@turf/bbox';
 const turfCenter = require('@turf/center').default;
+const turfDistance = require('@turf/distance').default;
 import * as turf from '@turf/helpers';
 import cheapRuler = require('cheap-ruler');
 
@@ -43,7 +44,7 @@ export default class Task {
       let last = points[i - 1].shape.center;
       let current = points[i].shape.center;
 
-      let distance = this._ruler.distance(last, current) * 1000;
+      let distance = turfDistance(last, current) * 1000;
       let bearing = this._ruler.bearing(last, current);
 
       this.legs.push({ distance, bearing });
@@ -73,10 +74,10 @@ export default class Task {
   }
 
   /**
-   * Calculates the distance from `a` to `b` using the private `_ruler` instance.
+   * Calculates the distance from `a` to `b`
    */
   measureDistance(a: Point, b: Point): number {
-    return this._ruler.distance(a, b);
+    return turfDistance(a, b);
   }
 
   private _calcDistance() {
