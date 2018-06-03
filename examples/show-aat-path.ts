@@ -1,6 +1,6 @@
 import * as turf from '@turf/helpers';
 
-import {readFlight} from '../src/read-flight';
+import {Fix, readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import {taskToGeoJSON} from '../src/task-to-geojson';
 import AreaTaskSolver from '../src/task/solver/area-task-solver';
@@ -26,7 +26,7 @@ let solver = new AreaTaskSolver(task);
 
 solver.consume(flight);
 
-let path = solver.result!.path;
+let path = solver.result.path as Fix[];
 
 let json = taskToGeoJSON(task);
 json.features.push(turf.lineString(flight.map(it => it.coordinate), { color: 'red', opacity: 0.85 }));
