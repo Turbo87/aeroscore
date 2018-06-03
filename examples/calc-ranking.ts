@@ -12,6 +12,7 @@ import {
   InitialDayFactors,
   InitialDayResult,
 } from '../src/scoring';
+import AreaTaskSolver from '../src/task/solver/area-task-solver';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
@@ -26,12 +27,6 @@ if (process.argv.length < 3) {
 let folder = process.argv[2];
 
 let task = readTask(`${folder}/task.tsk`);
-
-if (task.options.isAAT) {
-  console.log('AAT tasks are not supported yet');
-  process.exit(1);
-}
-
 let filterRows = readFromFile(`${folder}/filter.csv`);
 
 let callsigns: string[] = [];
@@ -61,8 +56,11 @@ fs.readdirSync(folder)
     callsigns.push(callsign.toUpperCase());
 
     flights[callsign.toUpperCase()] = readFlight(`${folder}/${filename}`);
-    solvers[callsign.toUpperCase()] = new RacingTaskSolver(task);
     indexes[callsign.toUpperCase()] = 0;
+
+    solvers[callsign.toUpperCase()] = task.options.isAAT
+      ? new AreaTaskSolver(task)
+      : new RacingTaskSolver(task);
   });
 
 let times = Object.keys(flights).map(key => flights[key]).map(flight => ({
@@ -111,7 +109,7 @@ function tick() {
     let lastFix = flights[callsign][indexes[callsign]];
     let altitude = lastFix ? lastFix.altitude : null;
 
-    let dayResult = (landed || result.completed)
+    let dayResult = (landed || result.completed || task.options.isAAT)
       ? createInitialDayResult(result, initialDayFactors, H)
       : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 
