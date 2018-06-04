@@ -2,7 +2,7 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "declaration": true,
-    "lib": ["ES6"],
+    "lib": ["ES2017"],
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "LF",
