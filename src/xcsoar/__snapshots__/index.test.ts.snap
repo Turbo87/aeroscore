@@ -2,7 +2,7 @@
 
 exports[`XCSoar - TaskReader - read() reads "2017-07-15-lev" task correctly 1`] = `
 Object {
-  "aat_min_time": 10800,
+  "aat_min_time": 12600,
   "points": Array [
     Object {
       "observation_zone": Object {
