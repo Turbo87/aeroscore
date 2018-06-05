@@ -10,7 +10,7 @@ const FIXTURES_PATH = `${__dirname}/../../../fixtures`;
 
 const FIXTURES = [
   ['2017-07-17-lev', '2017-lev.csv', null],
-  ['2017-07-17-lev', '2017-lev.csv', '2017-07-17T16:39:00Z'],
+  ['2017-07-17-lev', '2017-lev.csv', '2017-07-17T17:00:00Z'],
 ];
 
 describe('RacingTaskSolver', () => {
@@ -29,8 +29,13 @@ describe('RacingTaskSolver', () => {
       let lines = findFlights(`${FIXTURES_PATH}/${fixtureName}/`)
         .map(({ callsign, flight }) => {
           let solver = new RacingTaskSolver(task);
+
+          let landed = true;
           for (let fix of flight) {
-            if (fix.time > maxT) break;
+            if (fix.time > maxT) {
+              landed = false;
+              break;
+            }
 
             solver.update(fix);
           }
@@ -44,15 +49,16 @@ describe('RacingTaskSolver', () => {
           if (distance !== undefined) distance *= handicapFactor;
           if (speed !== undefined) speed *= handicapFactor;
 
-          return { callsign, handicap, result, distance, speed };
+          return { callsign, handicap, landed, result, distance, speed };
         })
         .sort(compareResults)
-        .map((result: any) => {
+        .map((result: any, i) => {
           let distance = result.result.distance !== undefined ? `${(result.result.distance / 1000).toFixed(1)} km` : '';
           let speed = result.result.speed !== undefined ? `${(result.result.speed).toFixed(2)} km/h` : '';
 
           return [
-            result.callsign,
+            `${result.landed || result.result.completed ? ' ' : '!'} ${(i + 1).toString().padStart(2)}`,
+            result.callsign.padEnd(3),
             result.handicap.toString().padStart(3),
             formatTime(result.result.path[0].time),
             distance.padStart(8),
