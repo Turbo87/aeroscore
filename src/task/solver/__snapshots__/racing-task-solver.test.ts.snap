@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RacingTaskSolver 2017-07-17-lev 1`] = `
+"
+IGP	  104	  136.1 km	   75.47 km/h
+1G	  101	  136.1 km	   70.21 km/h
+P9	  104	  136.1 km	   68.84 km/h
+MI	  104	  136.1 km	   68.25 km/h
+999	  100	  136.1 km	   64.49 km/h
+LC	  104	  136.1 km	   66.53 km/h
+MS	   98	  136.1 km	   61.85 km/h
+E1	  104	  136.1 km	   65.60 km/h
+1R	  104	  136.1 km	   65.22 km/h
+SW	   98	  136.1 km	   61.27 km/h
+1	  101	  136.1 km	   62.91 km/h
+FR	   98	  136.1 km	   60.77 km/h
+H1	  105	  136.1 km	   64.75 km/h
+EI	  107	  136.1 km	   65.77 km/h
+sq	  107	  136.1 km	   63.37 km/h
+JM	  101	  136.1 km	   59.36 km/h
+XN	   98	  136.1 km	   57.03 km/h
+T1	  104	  136.1 km	   59.18 km/h
+WJ	  104	  136.1 km	   54.19 km/h
+33	   98	  103.6 km	             
+ZG	  104	   94.2 km	             
+"
+`;
+
+exports[`RacingTaskSolver 2017-07-17-lev until 2017-07-17T16:39:00Z 1`] = `
+"
+IGP	  104	  135.6 km	             
+1G	  101	  118.1 km	             
+MI	  104	  119.2 km	             
+P9	  104	  118.8 km	             
+1	  101	  110.3 km	             
+XN	   98	  106.3 km	             
+999	  100	  108.0 km	             
+MS	   98	  105.1 km	             
+E1	  104	  110.8 km	             
+LC	  104	  110.3 km	             
+33	   98	  103.6 km	             
+1R	  104	  109.6 km	             
+EI	  107	  110.9 km	             
+H1	  105	  108.7 km	             
+SW	   98	  100.9 km	             
+JM	  101	  103.1 km	             
+FR	   98	   99.8 km	             
+sq	  107	  106.2 km	             
+WJ	  104	   90.6 km	             
+T1	  104	   90.4 km	             
+ZG	  104	   78.0 km	             
+"
+`;
+
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" can handle outlandings 1`] = `
 Object {
   "completed": false,
