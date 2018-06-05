@@ -7,5 +7,9 @@ export function formatResult(result: any) {
 
 export function formatTime(time: number) {
   let date = new Date(time);
-  return date.toISOString();
+  return [
+    date.getUTCHours().toString().padStart(2, '0'),
+    date.getUTCMinutes().toString().padStart(2, '0'),
+    Math.round(date.getUTCSeconds() + date.getUTCMilliseconds() / 1000).toString().padStart(2, '0'),
+  ].join(':');
 }
