@@ -11,6 +11,7 @@ const FIXTURES_PATH = `${__dirname}/../../../fixtures`;
 const FIXTURES = [
   ['2017-07-17-lev', null],
   ['2017-07-17-lev', '2017-07-17T17:00:00Z'],
+  ['Bayreuth/2018-05-30/Open', null],
 ];
 
 describe('RacingTaskSolver', () => {
@@ -206,7 +207,7 @@ function readCSV(path: string) {
   let handicaps = Object.create(null);
   lines.map(line => line.trim().split(',')).forEach(([id, _, cn, type, handicap]) => {
     if (id) {
-      handicaps[cn] = parseInt(handicap, 10);
+      handicaps[cn] = handicap ? parseInt(handicap, 10) : 100;
     }
   });
   return handicaps;
