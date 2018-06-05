@@ -9,12 +9,12 @@ import RacingTaskSolver from './racing-task-solver';
 const FIXTURES_PATH = `${__dirname}/../../../fixtures`;
 
 const FIXTURES = [
-  ['2017-07-17-lev', '2017-lev.csv', null],
-  ['2017-07-17-lev', '2017-lev.csv', '2017-07-17T17:00:00Z'],
+  ['2017-07-17-lev', null],
+  ['2017-07-17-lev', '2017-07-17T17:00:00Z'],
 ];
 
 describe('RacingTaskSolver', () => {
-  for (let [fixtureName, filterFilename, maxTime] of FIXTURES) {
+  for (let [fixtureName, maxTime] of FIXTURES) {
     let testName = fixtureName!;
     if (maxTime !== null) {
       testName += ` until ${maxTime}`;
@@ -23,8 +23,8 @@ describe('RacingTaskSolver', () => {
     let maxT = Date.parse(maxTime!);
 
     test(testName, () => {
-      let task = readTask(`${FIXTURES_PATH}/${fixtureName}.tsk`);
-      let handicaps = readCSV(`${FIXTURES_PATH}/${filterFilename}`);
+      let task = readTask(`${FIXTURES_PATH}/${fixtureName}/task.tsk`);
+      let handicaps = readCSV(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
 
       // Lowest Handicap (H) of all competitors
       let Ho = Math.min(...(Object.values(handicaps) as number[])) / 100;
