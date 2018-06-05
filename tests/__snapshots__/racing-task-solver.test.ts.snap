@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RacingTaskSolver 2017-07-17-lev 1`] = `
+exports[`Racing Task "2017-07-17-lev" final result 1`] = `
 "
    1	  IGP	  1.040	  14:50:57	  01:48:14	  136.1 km	   75.47 km/h	   431
    2	  1G 	  1.010	  14:54:34	  01:56:21	  136.1 km	   70.21 km/h	   398
@@ -26,7 +26,7 @@ exports[`RacingTaskSolver 2017-07-17-lev 1`] = `
 "
 `;
 
-exports[`RacingTaskSolver 2017-07-17-lev until 2017-07-17T17:00:00Z 1`] = `
+exports[`Racing Task "2017-07-17-lev" result after 2017-07-17T17:00:00Z 1`] = `
 "
    1	  IGP	  1.040	  14:50:57	  01:48:14	  136.1 km	   75.47 km/h	   417
    2	  1G 	  1.010	  14:54:34	  01:56:21	  136.1 km	   70.21 km/h	   399
@@ -52,7 +52,7 @@ exports[`RacingTaskSolver 2017-07-17-lev until 2017-07-17T17:00:00Z 1`] = `
 "
 `;
 
-exports[`RacingTaskSolver Bayreuth/2018-05-30/Open 1`] = `
+exports[`Racing Task "Bayreuth/2018-05-30/Open" final result 1`] = `
 "
    1	  HS 	  1.000	  12:43:08	  03:03:56	  312.3 km	  101.87 km/h	  1000
    2	  FO 	  1.000	  12:42:38	  03:04:25	  312.3 km	  101.60 km/h	   995
