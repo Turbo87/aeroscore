@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-import {formatTime} from '../../format-result';
+import {formatDuration, formatTime} from '../../format-result';
 import {readFlight} from '../../read-flight';
 import {readTask} from '../../read-task';
 import Task from '../task';
@@ -61,6 +61,7 @@ describe('RacingTaskSolver', () => {
             result.callsign.padEnd(3),
             result.handicap.toString().padStart(3),
             formatTime(result.result.path[0].time),
+            result.result.time ? formatDuration(result.result.time) : '        ',
             distance.padStart(8),
             speed.padStart(11),
           ].join('\t  ');
