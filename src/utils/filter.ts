@@ -21,7 +21,7 @@ export function readHandicapsFromFile(path: string) {
   let handicaps = Object.create(null);
   readFromFile(path).forEach(({ callsign, handicap }) => {
     if (callsign) {
-      handicaps[callsign] = handicap;
+      handicaps[callsign.toUpperCase()] = handicap;
     }
   });
   return handicaps;
