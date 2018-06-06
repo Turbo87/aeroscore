@@ -13,6 +13,7 @@ export function parse(content: string) {
     registration: row.CALL || '',
     callsign: row.CN || '',
     type: row.TYPE || '',
+    pilot: row.PILOT || '',
     handicap: row.HANDICAP ? parseInt(row.HANDICAP, 10) : 100,
   }));
 }
