@@ -1,5 +1,8 @@
 import fs = require('fs');
 
+import Table = require('cli-table2');
+import {HorizontalTable} from 'cli-table2';
+
 import {formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
@@ -84,14 +87,21 @@ function tick() {
     return { callsign, handicap, result, distance, speed };
   }).sort(compareResults);
 
-  let lines = results.map((result: any) => {
+  let table = new Table({
+    head: ['WBK', 'H', 'Dist', 'Speed'],
+    colAligns: ['left', 'right', 'right', 'right'],
+    colWidths: [null, null, 10, 13],
+    chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+  }) as HorizontalTable;
+
+  results.forEach((result: any) => {
     let distance = result.result.distance !== undefined ? `${(result.result.distance / 1000).toFixed(1)} km` : '';
     let speed = result.result.speed !== undefined ? `${(result.result.speed).toFixed(2)} km/h` : '';
 
-    return `${result.callsign}\t${result.handicap}\t${distance}\t${speed}`;
+    table.push([result.callsign, result.handicap, distance, speed]);
   });
 
-  let output = `Time: ${formatTime(time * 1000)}\n\n${lines.join('\n')}`;
+  let output = `Time: ${formatTime(time * 1000)}\n\n${table.toString()}`;
   logUpdate(output);
 
   time += 10;
