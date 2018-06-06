@@ -118,7 +118,7 @@ setInterval(() => {
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
     let result = solver.result;
-    result.cn = row.callsign;
+    result.pilot = row;
     result.altitude = lastFix && lastFix.altitude;
     return result;
   });
@@ -126,9 +126,9 @@ setInterval(() => {
   results.sort(compareResults);
 
   let table = new Table({
-    head: ['WBK', 'Dist', 'Speed', 'Altitude'],
-    colAligns: ['left', 'right', 'right', 'right'],
-    colWidths: [null, 10, 13, 10],
+    head: ['WBK', 'Name', 'Dist', 'Speed', 'Altitude'],
+    colAligns: ['left', 'left', 'right', 'right', 'right'],
+    colWidths: [null, null, 10, 13, 10],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
   }) as HorizontalTable;
 
@@ -137,7 +137,7 @@ setInterval(() => {
     let altitude = result.altitude !== undefined && result.altitude !== null ? `${result.altitude.toFixed(0)} m` : '';
     let speed = result.speed !== undefined ? `${(result.speed).toFixed(2)} km/h` : '';
 
-    table.push([result.cn, distance, speed, altitude]);
+    table.push([result.pilot.callsign, result.pilot.pilot, distance, speed, altitude]);
   });
 
   logUpdate(`${new Date().toISOString()}\n\n${table.toString()}`);
