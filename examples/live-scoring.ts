@@ -5,7 +5,7 @@ import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
-import {readHandicapsFromFile} from '../src/utils/filter';
+import {readFromFile} from '../src/utils/filter';
 
 const logUpdate = require('log-update');
 
@@ -30,11 +30,11 @@ if (task.options.isAAT) {
   process.exit(1);
 }
 
-let flarmIds = readHandicapsFromFile(process.argv[3]);
+let filterRows = readFromFile(process.argv[3]);
 
 let fixesById = new Map<string, Fix[]>();
-for (let flarmId of Object.keys(flarmIds)) {
-  fixesById.set(flarmId, []);
+for (let filterRow of filterRows) {
+  fixesById.set(filterRow.ognID, []);
 }
 
 let client = new GliderTrackerClient({ WebSocket: require('ws') });
@@ -43,8 +43,8 @@ function connect() {
   client.connect().then(() => {
     client.setView(task.bbox as BBox);
 
-    for (let id of Object.keys(flarmIds)) {
-      client.requestTrack(id, from, to);
+    for (let filterRow of filterRows) {
+      client.requestTrack(filterRow.ognID, from, to);
     }
   });
 }
@@ -77,7 +77,7 @@ client.onRecord = function(record) {
     return;
 
   let id = match[1];
-  let flarmMapping = flarmIds[id];
+  let flarmMapping = filterRows.find(row => row.ognID === id);
   if (!flarmMapping)
     return;
 
@@ -108,15 +108,14 @@ function compareResults(a: any, b: any) {
 }
 
 setInterval(() => {
-  let results = Object.keys(flarmIds).map(flarmId => {
-    let flarmMapping = flarmIds[flarmId];
-    let fixes = fixesById.get(flarmId)!;
+  let results = filterRows.map(row => {
+    let fixes = fixesById.get(row.ognID)!;
     let lastFix = fixes[fixes.length - 1];
 
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
     let result = solver.result;
-    result.cn = flarmMapping.cn;
+    result.cn = row.callsign;
     result.altitude = lastFix && lastFix.altitude;
     return result;
   });
