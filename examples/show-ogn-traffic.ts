@@ -1,12 +1,12 @@
 import OGNClient from '../src/ogn';
-import {readCSV} from './utils/read-csv';
+import {readHandicapsFromFile} from '../src/utils/filter';
 
 if (process.argv.length < 3) {
   console.log('Usage: ts-node examples/show-ogn-traffic.ts CSV_PATH');
   process.exit(1);
 }
 
-let senders = readCSV(process.argv[2]);
+let senders = readHandicapsFromFile(process.argv[2]);
 
 console.log('Connecting');
 let client = new OGNClient(Object.keys(senders));

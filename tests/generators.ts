@@ -1,10 +1,10 @@
 import fs = require('fs');
 
-import {csvParse} from 'd3-dsv';
 import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
+import {readHandicapsFromFile} from '../src/utils/filter';
 
 const FIXTURES_PATH = `${__dirname}/../fixtures`;
 
@@ -16,7 +16,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
       let untilTimestamp = until ? Date.parse(until) : null;
 
       let task = readTask(`${FIXTURES_PATH}/${fixtureName}/task.tsk`);
-      let handicaps = readCSV(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
+      let handicaps = readHandicapsFromFile(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
 
       // Lowest Handicap (H) of all competitors
       let Ho = Math.min(...(Object.values(handicaps) as number[])) / 100;
@@ -157,17 +157,4 @@ function findFlights(folderPath: string) {
       let flight = readFlight(`${folderPath}/${filename}`);
       return { filename, callsign, flight };
     });
-}
-
-function readCSV(path: string) {
-  let content = fs.readFileSync(path, 'utf8');
-  let lines = csvParse(content);
-
-  let handicaps = Object.create(null);
-  lines.forEach(({ CN, HANDICAP }) => {
-    if (CN) {
-      handicaps[CN] = HANDICAP ? parseInt(HANDICAP, 10) : 100;
-    }
-  });
-  return handicaps;
 }

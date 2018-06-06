@@ -5,7 +5,7 @@ import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
-import {readCSV} from './utils/read-csv';
+import {readHandicapsFromFile} from '../src/utils/filter';
 
 const logUpdate = require('log-update');
 
@@ -30,7 +30,7 @@ if (task.options.isAAT) {
   process.exit(1);
 }
 
-let flarmIds = readCSV(process.argv[3]);
+let flarmIds = readHandicapsFromFile(process.argv[3]);
 
 let fixesById = new Map<string, Fix[]>();
 for (let flarmId of Object.keys(flarmIds)) {
