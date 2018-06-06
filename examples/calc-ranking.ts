@@ -1,6 +1,5 @@
 import fs = require('fs');
 
-import {analyzeFlight} from '../src/analyze-flight';
 import {formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
