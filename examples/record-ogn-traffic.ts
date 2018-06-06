@@ -1,9 +1,9 @@
 import fs = require('fs');
 
 import OGNClient from '../src/ogn';
-import {readCSV} from './utils/read-csv';
+import {readHandicapsFromFile} from '../src/utils/filter';
 
-let senders = readCSV(`${__dirname}/../fixtures/2017-lev.csv`);
+let senders = readHandicapsFromFile(`${__dirname}/../fixtures/2017-lev.csv`);
 
 console.log('Connecting');
 let client = new OGNClient(Object.keys(senders));

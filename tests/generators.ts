@@ -4,6 +4,7 @@ import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
+import {readFromFile} from '../src/utils/filter';
 
 const FIXTURES_PATH = `${__dirname}/../fixtures`;
 
@@ -15,14 +16,16 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
       let untilTimestamp = until ? Date.parse(until) : null;
 
       let task = readTask(`${FIXTURES_PATH}/${fixtureName}/task.tsk`);
-      let handicaps = readCSV(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
+      let pilots = readFromFile(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
 
       // Lowest Handicap (H) of all competitors
-      let Ho = Math.min(...(Object.values(handicaps) as number[])) / 100;
+      let Ho = Math.min(...pilots.map(it => it.handicap)) / 100;
 
       let results = findFlights(`${FIXTURES_PATH}/${fixtureName}/`)
         .map(({ callsign, flight }) => {
           let solver = new RacingTaskSolver(task);
+
+          let pilot = pilots.find(it => it.callsign === callsign);
 
           let landed = true;
           for (let fix of flight) {
@@ -42,7 +45,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           let D = (result.distance || 0) / 1000;
 
           // Competitor’s Handicap, if handicapping is being used; otherwise H=1
-          let H = (handicaps[callsign.toUpperCase()] || 100) / 100;
+          let H = (pilot ? pilot.handicap : 100) / 100;
 
           // Competitor’s Handicapped Distance. (Dh = D x Ho / H) [km]
           let Dh = D * (Ho / H);
@@ -56,7 +59,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           // Finisher’s Handicapped Speed. (Vh = D / T x Ho / H)
           let Vh = V * (Ho / H);
 
-          return { callsign, landed, completed, D, H, Dh, T, V, Vh, startTimestamp };
+          return { pilot, landed, completed, D, H, Dh, T, V, Vh, startTimestamp };
         });
 
       // Task Distance [km]
@@ -126,12 +129,14 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         })
         .sort((a, b) => b.S - a.S)
         .map((result: any, i) => {
+          let { pilot } = result;
+
           let distance = result.D ? `${result.D.toFixed(1)} km` : '';
           let speed = result.V ? `${(result.V).toFixed(2)} km/h` : '';
 
           return [
             `${result.landed || result.completed ? ' ' : '!'} ${(i + 1).toString().padStart(2)}`,
-            result.callsign.padEnd(3),
+            pilot.callsign.padEnd(3),
             result.H.toFixed(3).padStart(5),
             formatTime(result.startTimestamp),
             result.T ? formatDuration(result.T) : '        ',
@@ -156,17 +161,4 @@ function findFlights(folderPath: string) {
       let flight = readFlight(`${folderPath}/${filename}`);
       return { filename, callsign, flight };
     });
-}
-
-function readCSV(path: string) {
-  let lines = fs.readFileSync(path, 'utf8').split('\n');
-  lines.shift();
-
-  let handicaps = Object.create(null);
-  lines.map(line => line.trim().split(',')).forEach(([id, _, cn, type, handicap]) => {
-    if (id) {
-      handicaps[cn] = handicap ? parseInt(handicap, 10) : 100;
-    }
-  });
-  return handicaps;
 }

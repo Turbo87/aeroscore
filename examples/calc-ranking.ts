@@ -4,6 +4,7 @@ import {formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
+import {readHandicapsFromFile} from '../src/utils/filter';
 
 const logUpdate = require('log-update');
 
@@ -21,7 +22,7 @@ if (task.options.isAAT) {
   process.exit(1);
 }
 
-let handicaps = readCSV(`${folder}/filter.csv`);
+let handicaps = readHandicapsFromFile(`${folder}/filter.csv`);
 
 let callsigns: string[] = [];
 let flights: any = {};
@@ -113,17 +114,4 @@ function compareResults(a: any, b: any) {
     return 1;
 
   return b.distance - a.distance;
-}
-
-function readCSV(path: string) {
-  let lines = fs.readFileSync(path, 'utf8').split('\n');
-  lines.shift();
-
-  let handicaps = Object.create(null);
-  lines.map(line => line.trim().split(',')).forEach(([id, _, cn, type, handicap]) => {
-    if (id) {
-      handicaps[cn] = handicap ? parseInt(handicap, 10) : 100;
-    }
-  });
-  return handicaps;
 }
