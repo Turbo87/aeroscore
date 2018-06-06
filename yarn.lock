@@ -137,6 +137,10 @@
     "@turf/invariant" "6.x"
     martinez-polygon-clipping "*"
 
+"@types/d3-dsv@^1.0.33":
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.0.33.tgz#18de1867927f7ec898671aef82f730f16d4c7fcb"
+
 "@types/geojson@^7946.0.3":
   version "7946.0.3"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.3.tgz#e5791534ab0acfb2b3a39b713966cfcee85d469f"
@@ -868,7 +872,7 @@ combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.12.1:
+commander@2, commander@^2.12.1:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
 
@@ -950,6 +954,14 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
+
+d3-dsv@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/d3-dsv/-/d3-dsv-1.0.8.tgz#907e240d57b386618dc56468bacfe76bf19764ae"
+  dependencies:
+    commander "2"
+    iconv-lite "0.4"
+    rw "1"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1552,6 +1564,12 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+iconv-lite@0.4, iconv-lite@^0.4.4:
+  version "0.4.23"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3"
+
 iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
@@ -1559,12 +1577,6 @@ iconv-lite@0.4.13:
 iconv-lite@0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
-
-iconv-lite@^0.4.4:
-  version "0.4.23"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
-  dependencies:
-    safer-buffer ">= 2.1.2 < 3"
 
 igc-filename-parser@^0.1.1:
   version "0.1.1"
@@ -3256,6 +3268,10 @@ robust-sum@^1.0.0:
 rsvp@^3.3.3:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.6.2.tgz#2e96491599a96cde1b515d5674a8f7a91452926a"
+
+rw@1:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/rw/-/rw-1.3.3.tgz#3f862dfa91ab766b14885ef4d01124bfda074fb4"
 
 safe-buffer@^5.0.1:
   version "5.1.1"

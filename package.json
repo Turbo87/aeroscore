@@ -31,9 +31,11 @@
     "xml-js": "^1.6.4"
   },
   "devDependencies": {
+    "@types/d3-dsv": "^1.0.33",
     "@types/geojson": "^7946.0.3",
     "@types/jest": "^23.0.0",
     "@types/node": "^6.0.83",
+    "d3-dsv": "^1.0.8",
     "jest": "^23.1.0",
     "log-update": "^2.3.0",
     "opn": "^5.3.0",

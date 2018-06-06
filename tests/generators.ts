@@ -1,5 +1,6 @@
 import fs = require('fs');
 
+import {csvParse} from 'd3-dsv';
 import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
@@ -159,13 +160,13 @@ function findFlights(folderPath: string) {
 }
 
 function readCSV(path: string) {
-  let lines = fs.readFileSync(path, 'utf8').split('\n');
-  lines.shift();
+  let content = fs.readFileSync(path, 'utf8');
+  let lines = csvParse(content);
 
   let handicaps = Object.create(null);
-  lines.map(line => line.trim().split(',')).forEach(([id, _, cn, type, handicap]) => {
-    if (id) {
-      handicaps[cn] = handicap ? parseInt(handicap, 10) : 100;
+  lines.forEach(({ CN, HANDICAP }) => {
+    if (CN) {
+      handicaps[CN] = HANDICAP ? parseInt(HANDICAP, 10) : 100;
     }
   });
   return handicaps;
