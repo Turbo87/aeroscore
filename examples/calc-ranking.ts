@@ -7,36 +7,35 @@ import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 
 const logUpdate = require('log-update');
 
-if (process.argv.length < 4) {
-  console.log('Usage: ts-node examples/calc-ranking.ts TASK_PATH IGC_FOLDER');
+if (process.argv.length < 3) {
+  console.log('Usage: ts-node examples/calc-ranking.ts FOLDER');
   process.exit(1);
 }
 
-let taskPath = process.argv[2];
-let task = readTask(taskPath);
+let folder = process.argv[2];
+
+let task = readTask(`${folder}/task.tsk`);
 
 if (task.options.isAAT) {
   console.log('AAT tasks are not supported yet');
   process.exit(1);
 }
 
-let handicaps = readCSV(`${__dirname}/../fixtures/2017-lev.csv`);
-
-let flightsPath = process.argv[3];
+let handicaps = readCSV(`${folder}/filter.csv`);
 
 let callsigns: string[] = [];
 let flights: any = {};
 let solvers: any = {};
 let indexes: any = {};
 
-fs.readdirSync(flightsPath)
+fs.readdirSync(folder)
   .filter(filename => (/\.igc$/i).test(filename))
   .forEach(filename => {
     let callsign = filename.match(/^(.{1,3})_/)![1];
 
     callsigns.push(callsign.toUpperCase());
 
-    flights[callsign.toUpperCase()] = readFlight(`${flightsPath}/${filename}`);
+    flights[callsign.toUpperCase()] = readFlight(`${folder}/${filename}`);
     solvers[callsign.toUpperCase()] = new RacingTaskSolver(task);
     indexes[callsign.toUpperCase()] = 0;
   });

@@ -23,7 +23,7 @@ library is currently capable of. It is recommended to run them using
 [ts-node](https://github.com/TypeStrong/ts-node). For example:
 
 ```bash
-ts-node examples/calc-ranking.ts fixtures/2017-07-17-lev.tsk fixtures/2017-07-17-lev
+ts-node examples/calc-ranking.ts fixtures/2017-07-17-lev
 ```
 
 
