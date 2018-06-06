@@ -112,8 +112,8 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
       let Pdm = Pm - Pvm;
 
       let table = new Table({
-        head: ['#', 'WBK', 'H', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
-        colAligns: ['right', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
+        head: ['#', 'WBK', 'Name', 'H', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
+        colAligns: ['right', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
         chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
         style: { head: [], border: [] },
       });
@@ -145,6 +145,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           table.push([
             `${result.landed || result.completed ? ' ' : '!'} ${(i + 1)}`,
             pilot.callsign,
+            pilot.pilot,
             result.H.toFixed(3),
             formatTime(result.startTimestamp),
             result.T ? formatDuration(result.T) : '',
