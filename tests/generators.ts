@@ -1,5 +1,8 @@
 import fs = require('fs');
 
+import Table = require('cli-table2');
+import {HorizontalTable} from 'cli-table2';
+
 import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
@@ -110,6 +113,13 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
       // Maximum available Distance Points for the Day, before F and FCR are applied
       let Pdm = Pm - Pvm;
 
+      let table = new Table({
+        head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
+        colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
+        chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+        style: { head: [], border: [] },
+      }) as HorizontalTable;
+
       let lines = results
         .map(result => {
           // Finisher’s Speed points
@@ -128,26 +138,26 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           return {...result, Pv, Pd, S};
         })
         .sort((a, b) => b.S - a.S)
-        .map((result: any, i) => {
+        .forEach((result: any, i) => {
           let { pilot } = result;
 
           let distance = result.D ? `${result.D.toFixed(1)} km` : '';
           let speed = result.V ? `${(result.V).toFixed(2)} km/h` : '';
 
-          return [
-            `${result.landed || result.completed ? ' ' : '!'} ${(i + 1).toString().padStart(2)}`,
-            pilot.callsign.padEnd(3),
-            result.H.toFixed(3).padStart(5),
+          table.push([
+            `${result.landed || result.completed ? ' ' : '!'} ${(i + 1)}`,
+            pilot.callsign,
+            pilot.pilot,
+            pilot.type,
             formatTime(result.startTimestamp),
-            result.T ? formatDuration(result.T) : '        ',
-            distance.padStart(8),
-            speed.padStart(11),
-            Math.round(result.S).toString().padStart(4),
-          ].join('\t  ');
-        })
-        .join('\n');
+            result.T ? formatDuration(result.T) : '',
+            distance,
+            speed,
+            Math.round(result.S),
+          ]);
+        });
 
-      expect(`\n${lines}\n`).toMatchSnapshot();
+      expect(`\n${table.toString()}\n`).toMatchSnapshot();
     });
   });
 }

@@ -1,10 +1,13 @@
 import fs = require('fs');
 
+import Table = require('cli-table2');
+import {HorizontalTable} from 'cli-table2';
+
 import {formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
-import {readHandicapsFromFile} from '../src/utils/filter';
+import {readFromFile} from '../src/utils/filter';
 
 const logUpdate = require('log-update');
 
@@ -22,7 +25,7 @@ if (task.options.isAAT) {
   process.exit(1);
 }
 
-let handicaps = readHandicapsFromFile(`${folder}/filter.csv`);
+let filterRows = readFromFile(`${folder}/filter.csv`);
 
 let callsigns: string[] = [];
 let flights: any = {};
@@ -74,24 +77,32 @@ function tick() {
     let solver = solvers[callsign] as RacingTaskSolver;
     let result = solver.result;
 
-    let handicap = handicaps[callsign.toUpperCase()];
+    let filterRow = filterRows.find(row => row.callsign.toUpperCase() === callsign.toUpperCase())!;
+    let handicap = filterRow.handicap;
     let handicapFactor = 100 / handicap;
 
     let { distance, speed } = result;
     if (distance !== undefined) distance *= handicapFactor;
     if (speed !== undefined) speed *= handicapFactor;
 
-    return { callsign, handicap, result, distance, speed };
+    return { callsign, filterRow, handicap, result, distance, speed };
   }).sort(compareResults);
 
-  let lines = results.map((result: any) => {
+  let table = new Table({
+    head: ['WBK', 'Name', 'H', 'Dist', 'Speed'],
+    colAligns: ['left', 'left', 'right', 'right', 'right'],
+    colWidths: [null, null, null, 10, 13],
+    chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+  }) as HorizontalTable;
+
+  results.forEach((result: any) => {
     let distance = result.result.distance !== undefined ? `${(result.result.distance / 1000).toFixed(1)} km` : '';
     let speed = result.result.speed !== undefined ? `${(result.result.speed).toFixed(2)} km/h` : '';
 
-    return `${result.callsign}\t${result.handicap}\t${distance}\t${speed}`;
+    table.push([result.callsign, result.filterRow.pilot, result.handicap, distance, speed]);
   });
 
-  let output = `Time: ${formatTime(time * 1000)}\n\n${lines.join('\n')}`;
+  let output = `Time: ${formatTime(time * 1000)}\n\n${table.toString()}`;
   logUpdate(output);
 
   time += 10;

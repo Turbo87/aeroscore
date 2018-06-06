@@ -1,5 +1,8 @@
 import {BBox} from 'cheap-ruler';
 
+import Table = require('cli-table2');
+import {HorizontalTable} from 'cli-table2';
+
 import Point from '../src/geo/point';
 import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
@@ -115,20 +118,27 @@ setInterval(() => {
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
     let result = solver.result;
-    result.cn = row.callsign;
+    result.pilot = row;
     result.altitude = lastFix && lastFix.altitude;
     return result;
   });
 
   results.sort(compareResults);
 
-  let lines = results.map(result => {
+  let table = new Table({
+    head: ['WBK', 'Name', 'Dist', 'Speed', 'Altitude'],
+    colAligns: ['left', 'left', 'right', 'right', 'right'],
+    colWidths: [null, null, 10, 13, 10],
+    chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+  }) as HorizontalTable;
+
+  results.forEach(result => {
     let distance = result.distance !== undefined ? `${(result.distance / 1000).toFixed(1)} km` : '';
     let altitude = result.altitude !== undefined && result.altitude !== null ? `${result.altitude.toFixed(0)} m` : '';
     let speed = result.speed !== undefined ? `${(result.speed).toFixed(2)} km/h` : '';
 
-    return `${result.cn}\t${speed || altitude}\t${distance}`;
+    table.push([result.pilot.callsign, result.pilot.pilot, distance, speed, altitude]);
   });
 
-  logUpdate(`${new Date().toISOString()}\n\n${lines.join('\n')}`);
+  logUpdate(`${new Date().toISOString()}\n\n${table.toString()}`);
 }, 100);
