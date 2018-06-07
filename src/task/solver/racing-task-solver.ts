@@ -1,5 +1,4 @@
 import {Fix} from '../../read-flight';
-import {Event, FinishEvent, StartEvent, TurnEvent} from '../events';
 import Task from '../task';
 import TaskPointTracker from '../task-point-tracker';
 
@@ -19,10 +18,6 @@ export default class RacingTaskSolver {
   constructor(task: Task) {
     this.task = task;
     this._tracker = new TaskPointTracker(task, { trackConvexHull: false });
-  }
-
-  get events() {
-    return this._tracker.events;
   }
 
   consume(fixes: Fix[]) {
@@ -94,13 +89,9 @@ export default class RacingTaskSolver {
     // favorable valid Start Time and the Finish Time. For non-finishers the
     // Marking Time is undefined.
 
-    let path = this.events
-      .filter(event => event instanceof StartEvent)
-      .map(event => pathForStart(event, this.events))
-      .sort(sortEventPaths)
-      .shift();
+    let path = this.findBestPath();
 
-    let time = path && path.time;
+    let time = completed ? (path[path.length - 1].time - path[0].time) / 1000 : undefined;
 
     // SC3a §6.3.1d (v)
     //
@@ -110,46 +101,65 @@ export default class RacingTaskSolver {
     let speed = completed ? (distance as number / 1000) / (time as number / 3600) : undefined;
 
     return {
-      path: path ? path.path : [],
+      path,
       completed,
       time,
       distance,
       speed,
     };
   }
-}
 
-export function pathForStart(start: StartEvent, events: Event[]): EventPath {
-  let path: Event[] = [start];
-  let time;
-
-  for (let i = events.indexOf(start) + 1; i < events.length; i++) {
-    let event = events[i];
-    if (event instanceof TurnEvent && event.num === path.length) {
-      path.push(event);
-    } else if (event instanceof FinishEvent) {
-      path.push(event);
-      time = (event.time - start.time) / 1000;
+  private findBestPath(): Fix[] {
+    for (let i = this._tracker.starts.length - 1; i >= 0; i--) {
+      let start = this._tracker.starts[i];
+      let path = this.findPathFrom(start, 0);
+      if (path) {
+        return [start, ...path];
+      }
     }
+
+    return [];
   }
 
-  return { path, time };
-}
+  private findPathFrom(fix: Fix, turnpointIndex: number): Fix[] | null {
+    if (this._tracker.finish) {
+      let finish = this._tracker.finish;
 
-export interface EventPath {
-  path: Event[];
-  time: number | undefined;
-}
+      if (fix.time > finish.time) {
+        return null;
+      }
 
-function sortEventPaths(a: EventPath, b: EventPath) {
-  if (a.time !== undefined && b.time !== undefined)
-    return a.time - b.time;
+      if (turnpointIndex === this.task.points.length - 2) {
+        return [finish];
+      }
 
-  if (a.time !== undefined && b.time === undefined)
-    return -1;
+    } else if (this._maxDistance) {
+      let maxDistance = this._maxDistance;
 
-  if (a.time === undefined && b.time !== undefined)
-    return 1;
+      if (fix.time > maxDistance.fix.time) {
+        return null;
+      }
 
-  return b.path.length - a.path.length;
+      if (turnpointIndex === maxDistance.legIndex) {
+        return [maxDistance.fix];
+      }
+
+    } else {
+      return null;
+    }
+
+    let areaVisits = this._tracker.areaVisits[turnpointIndex];
+    for (let visit of areaVisits) {
+      if (visit.enter.time < fix.time) {
+        continue;
+      }
+
+      let path = this.findPathFrom(visit.enter, turnpointIndex + 1);
+      if (path) {
+        return [visit.enter, ...path];
+      }
+    }
+
+    return null;
+  }
 }
