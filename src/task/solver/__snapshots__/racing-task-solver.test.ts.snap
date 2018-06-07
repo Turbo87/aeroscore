@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`RacingTaskSolver with "Bayreuth/2018-05-30/Open" can selects correct start point for max distance 1`] = `
+Object {
+  "completed": false,
+  "distance": 2942.4650,
+  "path": Array [
+    StartEvent {
+      "point": lon 11.4742227 lat 49.9911903,
+      "time": 2018-05-30T11:30:08.208Z,
+      "type": "start",
+    },
+  ],
+  "speed": undefined,
+  "time": undefined,
+}
+`;
+
 exports[`RacingTaskSolver with task "2017-07-17-lev.tsk" can handle outlandings 1`] = `
 Object {
   "completed": false,
