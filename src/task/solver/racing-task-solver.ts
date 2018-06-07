@@ -1,12 +1,12 @@
-import Point from '../../geo/point';
 import {Fix} from '../../read-flight';
 import {Event, FinishEvent, StartEvent, TurnEvent} from '../events';
 import Task from '../task';
 import TaskPointTracker from '../task-point-tracker';
 
-export interface TaskFix {
-  time: number;
-  point: Point;
+interface MaxDistanceData {
+  distance: number;
+  legIndex: number;
+  fix: Fix;
 }
 
 export default class RacingTaskSolver {
@@ -14,8 +14,7 @@ export default class RacingTaskSolver {
 
   private _tracker: TaskPointTracker;
 
-  private _maxDistance = 0;
-  private _maxDistanceFix: TaskFix | undefined;
+  private _maxDistance: MaxDistanceData | undefined;
 
   constructor(task: Task) {
     this.task = task;
@@ -65,9 +64,8 @@ export default class RacingTaskSolver {
       this.task.measureDistance(fix.coordinate, nextTP.shape.center) * 1000;
 
     let maxDistance = finishedLegsDistance + currentLegDistance;
-    if (maxDistance > this._maxDistance) {
-      this._maxDistance = maxDistance;
-      this._maxDistanceFix = { time: fix.time, point: fix.coordinate };
+    if (!this._maxDistance || maxDistance > this._maxDistance.distance) {
+      this._maxDistance = { distance: maxDistance, legIndex, fix };
     }
   }
 
@@ -84,7 +82,11 @@ export default class RacingTaskSolver {
     //
     // For a completed task, the Marking Distance is the Task Distance.
 
-    let distance = completed ? this.task.distance : this._maxDistance;
+    let distance = completed
+      ? this.task.distance
+      : this._maxDistance
+        ? this._maxDistance.distance
+        : 0;
 
     // SC3a §6.3.1d (iv)
     //
