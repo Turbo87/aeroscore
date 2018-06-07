@@ -20,12 +20,12 @@ export function calculateDayFactors(results: InitialDayResult[], initial: Initia
   // Number of competitors having had a competition launch that Day
   let N = results.length;
 
-  // Marking Time (T) of the finisher whose Vh = Vo; In case of a tie, lowest T applies
+  // Marking Time (T) of the finisher whose Vh = Vo; In case of a tie, lowest T applies [s]
   let To = Math.min(...results.filter(it => it.Vh === Vo).map(it => it.T));
 
   // Maximum available Score for the Day, before F and FCR are applied
   let Pm = results.filter(it => it.completed).length > 0
-    ? Math.max(0, Math.min(1000, 5 * Do - 250, 400 * To - 200))
+    ? Math.max(0, Math.min(1000, 5 * Do - 250, 400 * (To / 3600) - 200))
     : Math.max(0, Math.min(1000, 5 * Do - 250));
 
   // Day Factor
