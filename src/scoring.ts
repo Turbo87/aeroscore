@@ -72,7 +72,7 @@ export function calculateDayResult(result: InitialDayResult, dayFactors: DayFact
   // Competitor’s Distance Points
   let Pd = result.completed
     ? Pdm
-    : Pdm * (result.Dh / Do);
+    : Pdm * (Do ? result.Dh / Do : 0);
 
   // Competitor’s Score for the Day expressed in points
   let S = Math.round(F * FCR * (Pv + Pd));
