@@ -32,7 +32,7 @@ export function calculateDayFactors(results: InitialDayResult[], initial: Initia
   let F = Math.min(1, 1.25 * n1 / N);
 
   // Completion Ratio Factor
-  let FCR = Math.min(1, 1.2 * (n2 / n1) + 0.6);
+  let FCR = Math.min(1, n1 ? 1.2 * (n2 / n1) + 0.6 : 0);
 
   // Maximum available Speed Points for the Day, before F and FCR are applied
   let Pvm = (2 / 3) * (n2 / N) * Pm;
