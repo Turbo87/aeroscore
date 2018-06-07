@@ -75,7 +75,7 @@ export function calculateDayResult(result: InitialDayResult, dayFactors: DayFact
     : Pdm * (result.Dh / Do);
 
   // Competitor’s Score for the Day expressed in points
-  let S = F * FCR * (Pv + Pd);
+  let S = Math.round(F * FCR * (Pv + Pd));
 
   return {...result, Pv, Pd, S};
 }

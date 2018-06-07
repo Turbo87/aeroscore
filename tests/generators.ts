@@ -103,7 +103,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
             result.T ? formatDuration(result.T) : '',
             distance,
             speed,
-            Math.round(result.S),
+            result.S,
           ]);
         });
 
