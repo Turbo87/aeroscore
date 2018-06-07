@@ -24,7 +24,9 @@ export function calculateDayFactors(results: InitialDayResult[], initial: Initia
   let To = Math.min(...results.filter(it => it.Vh === Vo).map(it => it.T));
 
   // Maximum available Score for the Day, before F and FCR are applied
-  let Pm = Math.min(1000, 5 * Do - 250, 400 * To - 200);
+  let Pm = results.filter(it => it.completed).length > 0
+    ? Math.max(0, Math.min(1000, 5 * Do - 250, 400 * To - 200))
+    : Math.max(0, Math.min(1000, 5 * Do - 250));
 
   // Day Factor
   let F = Math.min(1, 1.25 * n1 / N);
