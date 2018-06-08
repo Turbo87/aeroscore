@@ -95,7 +95,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
             pilot.callsign,
             pilot.pilot,
             pilot.type,
-            formatTime(result.startTimestamp),
+            result.startTimestamp ? formatTime(result.startTimestamp) : '',
             result._T ? formatDuration(result._T) : '',
             distance,
             speed,
