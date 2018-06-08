@@ -9,6 +9,7 @@ import {readTask} from '../src/read-task';
 import {
   calculateDayFactors,
   calculateDayResult,
+  compareDayResults,
   createInitialDayResult,
   InitialDayFactors,
   InitialDayResult,
@@ -87,7 +88,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
       results
         .map(result => calculateDayResult(result, dayFactors))
-        .sort((a, b) => b.S - a.S)
+        .sort(compareDayResults)
         .forEach((result: any, i) => {
           let { pilot } = result;
 
@@ -103,7 +104,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
             result.T ? formatDuration(result.T) : '',
             distance,
             speed,
-            Math.round(result.S),
+            result.S,
           ]);
         });
 

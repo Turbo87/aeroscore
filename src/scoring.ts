@@ -20,19 +20,19 @@ export function calculateDayFactors(results: InitialDayResult[], initial: Initia
   // Number of competitors having had a competition launch that Day
   let N = results.length;
 
-  // Marking Time (T) of the finisher whose Vh = Vo; In case of a tie, lowest T applies
+  // Marking Time (T) of the finisher whose Vh = Vo; In case of a tie, lowest T applies [s]
   let To = Math.min(...results.filter(it => it.Vh === Vo).map(it => it.T));
 
   // Maximum available Score for the Day, before F and FCR are applied
   let Pm = results.filter(it => it.completed).length > 0
-    ? Math.max(0, Math.min(1000, 5 * Do - 250, 400 * To - 200))
+    ? Math.max(0, Math.min(1000, 5 * Do - 250, 400 * (To / 3600) - 200))
     : Math.max(0, Math.min(1000, 5 * Do - 250));
 
   // Day Factor
   let F = Math.min(1, 1.25 * n1 / N);
 
   // Completion Ratio Factor
-  let FCR = Math.min(1, 1.2 * (n2 / n1) + 0.6);
+  let FCR = Math.min(1, n1 ? 1.2 * (n2 / n1) + 0.6 : 0);
 
   // Maximum available Speed Points for the Day, before F and FCR are applied
   let Pvm = (2 / 3) * (n2 / N) * Pm;
@@ -72,12 +72,26 @@ export function calculateDayResult(result: InitialDayResult, dayFactors: DayFact
   // Competitor’s Distance Points
   let Pd = result.completed
     ? Pdm
-    : Pdm * (result.Dh / Do);
+    : Pdm * (Do ? result.Dh / Do : 0);
 
   // Competitor’s Score for the Day expressed in points
-  let S = F * FCR * (Pv + Pd);
+  let S = Math.round(F * FCR * (Pv + Pd));
 
   return {...result, Pv, Pd, S};
+}
+
+export function compareDayResults(a: DayResult, b: DayResult): number {
+  let dS = b.S - a.S;
+  if (dS !== 0) {
+    return dS;
+  }
+
+  let dVh = b.Vh - a.Vh;
+  if (dVh !== 0) {
+    return dVh;
+  }
+
+  return b.Dh - a.Dh;
 }
 
 export interface InitialDayFactors {
