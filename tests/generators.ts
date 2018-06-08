@@ -89,7 +89,16 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         .map(result => calculateDayResult(result, dayFactors))
         .sort((a, b) => {
           let dS = b.S - a.S;
-          return dS !== 0 ? dS : b.Vh - a.Vh;
+          if (dS !== 0) {
+            return dS;
+          }
+
+          let dVh = b.Vh - a.Vh;
+          if (dVh !== 0) {
+            return dVh;
+          }
+
+          return b.Dh - a.Dh;
         })
         .forEach((result: any, i) => {
           let { pilot } = result;
