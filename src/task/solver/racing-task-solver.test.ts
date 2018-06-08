@@ -37,4 +37,21 @@ describe('RacingTaskSolver', () => {
       expect(solver.result).toMatchSnapshot();
     });
   });
+
+  describe('with "Bayreuth/2018-05-30/Open"', () => {
+    let task: Task;
+    let solver: RacingTaskSolver;
+
+    beforeEach(() => {
+      task = readTask(`${FIXTURES_PATH}/Bayreuth/2018-05-30/Open/task.tsk`);
+      solver = new RacingTaskSolver(task);
+    });
+
+    it('can selects correct start point for max distance', () => {
+      let flight = readFlight(`${FIXTURES_PATH}/Bayreuth/2018-05-30/Open/FU_85uv7ag1.igc`);
+      let fixes = flight.filter(it => it.time <= Date.parse('2018-05-30T11:47:36Z'));
+      solver.consume(fixes);
+      expect(solver.result).toMatchSnapshot();
+    });
+  });
 });

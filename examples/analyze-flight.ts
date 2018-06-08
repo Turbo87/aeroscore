@@ -1,7 +1,5 @@
-import {formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
-import {FinishEvent, StartEvent, TurnEvent} from '../src/task/events';
 import AreaTaskSolver from '../src/task/solver/area-task-solver';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 
@@ -28,14 +26,5 @@ if (task.options.isAAT) {
 
   solver.consume(flight);
 
-  solver.events.forEach(event => {
-    if (event instanceof StartEvent)
-      console.log(`Start at ${formatTime(event.time)}`);
-
-    if (event instanceof TurnEvent)
-      console.log(`Reached TP${event.num} at ${formatTime(event.time)}`);
-
-    if (event instanceof FinishEvent)
-      console.log(`Finish at ${formatTime(event.time)}`);
-  });
+  console.log(solver.result);
 }
