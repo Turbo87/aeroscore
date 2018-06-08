@@ -87,8 +87,8 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         .forEach((result: any, i) => {
           let { pilot } = result;
 
-          let distance = result.D ? `${result.D.toFixed(1)} km` : '';
-          let speed = result.V ? `${(result.V).toFixed(2)} km/h` : '';
+          let distance = result._D ? `${result._D.toFixed(1)} km` : '';
+          let speed = result._V ? `${(result._V).toFixed(2)} km/h` : '';
 
           table.push([
             `${result.landed || result.completed ? ' ' : '!'} ${(i + 1)}`,
@@ -96,7 +96,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
             pilot.pilot,
             pilot.type,
             formatTime(result.startTimestamp),
-            result.T ? formatDuration(result.T) : '',
+            result._T ? formatDuration(result._T) : '',
             distance,
             speed,
             result.S,

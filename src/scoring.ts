@@ -47,14 +47,19 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
   let { completed } = result;
   let { Ho } = dayFactors;
 
+  let D, _D, T, _T, V, _V;
+
   // Competitor’s Marking Distance [km]
-  let D = result.distance / 1000;
+  // Competitor’s Display Distance [km]
+  D = _D = result.distance / 1000;
 
   // Finisher’s Marking Time [s]
-  let T = result.time;
+  // Finisher’s Display Time [s]
+  T = _T = result.time;
 
   // Finisher’s Marking Speed. (V = D / T)
-  let V = completed ? D / (T / 3600) : 0;
+  // Finisher’s Display Speed.
+  V = _V = completed ? D / (T / 3600) : 0;
 
   // Competitor’s Handicapped Distance. (Dh = D x Ho / H) [km]
   let Dh = D * (Ho / H);
@@ -62,7 +67,7 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
   // Finisher’s Handicapped Speed. (Vh = D / T x Ho / H)
   let Vh = V * (Ho / H);
 
-  return { completed, D, H, Dh, T, V, Vh };
+  return { completed, D, _D, H, Dh, T, _T, V, _V, Vh };
 }
 
 export function calculateDayResult(result: InitialDayResult, dayFactors: DayFactors): DayResult {
@@ -153,6 +158,9 @@ export interface InitialDayResult {
   /** Competitor’s Marking Distance [km] */
   D: number;
 
+  /** Competitor’s Display Distance [km] */
+  _D: number;
+
   /** Competitor’s Handicap, if handicapping is being used; otherwise H=1 */
   H: number;
 
@@ -162,8 +170,14 @@ export interface InitialDayResult {
   /** Finisher’s Marking Time [s] */
   T: number;
 
+  /** Finisher’s Display Time [s] */
+  _T: number;
+
   /** Finisher’s Marking Speed. (V = D / T) */
   V: number;
+
+  /** Finisher’s Display Speed. (V = D / T) */
+  _V: number;
 
   /** Finisher’s Handicapped Speed. (Vh = D / T x Ho / H) */
   Vh: number;
