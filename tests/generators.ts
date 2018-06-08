@@ -91,7 +91,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           let speed = result._V ? `${(result._V).toFixed(2)} km/h` : '';
 
           table.push([
-            `${result.landed || result.completed ? ' ' : '!'} ${(i + 1)}`,
+            `${result.landed || result._completed ? ' ' : '!'} ${(i + 1)}`,
             pilot.callsign,
             pilot.pilot,
             pilot.type,

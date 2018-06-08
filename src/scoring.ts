@@ -51,6 +51,8 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
 
   let D, _D, T, _T, V, _V;
 
+  let _completed = completed;
+
   // Competitor’s Marking Distance [km]
   // Competitor’s Display Distance [km]
   D = _D = result.distance / 1000;
@@ -69,7 +71,7 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
   // Finisher’s Handicapped Speed. (Vh = D / T x Ho / H)
   let Vh = V * (Ho / H);
 
-  return { completed, D, _D, H, Dh, T, _T, V, _V, Vh };
+  return { completed, _completed, D, _D, H, Dh, T, _T, V, _V, Vh };
 }
 
 export function createIntermediateDayResult(
@@ -82,7 +84,9 @@ export function createIntermediateDayResult(
 
   let start = result.path[0];
   let hasStart = Boolean(start && result.distance);
+
   let completed = hasStart;
+  let _completed = result.completed;
 
   // Competitor’s Display Distance [km]
   _D = hasStart ? result.distance / 1000 : 0;
@@ -106,7 +110,7 @@ export function createIntermediateDayResult(
   // Finisher’s Handicapped Speed. (Vh = D / T x Ho / H)
   let Vh = V * (Ho / H);
 
-  return { completed, D, _D, H, Dh, T, _T, V, _V, Vh };
+  return { completed, _completed, D, _D, H, Dh, T, _T, V, _V, Vh };
 }
 
 export function calculateDayResult(result: InitialDayResult, dayFactors: DayFactors): DayResult {
@@ -193,6 +197,7 @@ export interface DayFactors extends InitialDayFactors {
 
 export interface InitialDayResult {
   completed: boolean;
+  _completed: boolean;
 
   /** Competitor’s Marking Distance [km] */
   D: number;
