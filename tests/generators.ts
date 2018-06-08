@@ -11,6 +11,7 @@ import {
   calculateDayResult,
   compareDayResults,
   createInitialDayResult,
+  createIntermediateDayResult,
   InitialDayFactors,
   InitialDayResult,
 } from '../src/scoring';
@@ -67,7 +68,9 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           // Competitor’s Handicap, if handicapping is being used; otherwise H=1
           let H = (pilot ? pilot.handicap : 100) / 100;
 
-          let dayResult = createInitialDayResult(result, initialDayFactors, H);
+          let dayResult = (landed || result.completed)
+            ? createInitialDayResult(result, initialDayFactors, H)
+            : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 
           return { ...dayResult, pilot, landed, startTimestamp };
         });
