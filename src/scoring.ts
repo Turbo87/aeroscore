@@ -80,6 +80,20 @@ export function calculateDayResult(result: InitialDayResult, dayFactors: DayFact
   return {...result, Pv, Pd, S};
 }
 
+export function compareDayResults(a: DayResult, b: DayResult): number {
+  let dS = b.S - a.S;
+  if (dS !== 0) {
+    return dS;
+  }
+
+  let dVh = b.Vh - a.Vh;
+  if (dVh !== 0) {
+    return dVh;
+  }
+
+  return b.Dh - a.Dh;
+}
+
 export interface InitialDayFactors {
   /** Lowest Handicap (H) of all competitors */
   Ho: number;
