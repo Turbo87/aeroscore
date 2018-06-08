@@ -11,6 +11,7 @@ import {
   calculateDayResult,
   compareDayResults,
   createInitialDayResult,
+  createIntermediateDayResult,
   InitialDayFactors,
   InitialDayResult,
 } from '../src/scoring';
@@ -49,8 +50,10 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
           let pilot = pilots.find(it => it.callsign === callsign);
 
-          let landed = true;
+          let landed = true, time = 0;
           for (let fix of flight) {
+            time = fix.time / 1000;
+
             if (untilTimestamp !== null && fix.time > untilTimestamp) {
               landed = false;
               break;
@@ -60,24 +63,23 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           }
 
           let result = solver.result;
-          let { completed } = result;
           let startTimestamp = result.path[0].time;
 
           // Competitor’s Handicap, if handicapping is being used; otherwise H=1
           let H = (pilot ? pilot.handicap : 100) / 100;
 
-          // Competitor’s Marking Distance [km]
-          let D = (result.distance || 0) / 1000;
-
-          // Finisher’s Marking Time [s]
-          let T = result.time;
-
-          let dayResult = createInitialDayResult(completed, D, T, H, initialDayFactors);
+          let dayResult = (landed || result.completed)
+            ? createInitialDayResult(result, initialDayFactors, H)
+            : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 
           return { ...dayResult, pilot, landed, startTimestamp };
         });
 
       let dayFactors = calculateDayFactors(results, initialDayFactors);
+
+      let fullResults = results
+        .map(result => calculateDayResult(result, dayFactors))
+        .sort(compareDayResults);
 
       let table = new Table({
         head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
@@ -86,27 +88,21 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         style: { head: [], border: [] },
       }) as HorizontalTable;
 
-      results
-        .map(result => calculateDayResult(result, dayFactors))
-        .sort(compareDayResults)
-        .forEach((result: any, i) => {
-          let { pilot } = result;
+      fullResults.forEach((result: any, i) => {
+        let { pilot } = result;
 
-          let distance = result.D ? `${result.D.toFixed(1)} km` : '';
-          let speed = result.V ? `${(result.V).toFixed(2)} km/h` : '';
-
-          table.push([
-            `${result.landed || result.completed ? ' ' : '!'} ${(i + 1)}`,
-            pilot.callsign,
-            pilot.pilot,
-            pilot.type,
-            formatTime(result.startTimestamp),
-            result.T ? formatDuration(result.T) : '',
-            distance,
-            speed,
-            result.S,
-          ]);
-        });
+        table.push([
+          `${result.landed || result._completed ? ' ' : '!'} ${(i + 1)}`,
+          pilot.callsign,
+          pilot.pilot,
+          pilot.type,
+          result.startTimestamp ? formatTime(result.startTimestamp) : '',
+          result._T ? formatDuration(result._T) : '',
+          result._D ? `${result._D.toFixed(1)} km` : '',
+          result._V ? `${result._V.toFixed(2)} km/h` : '',
+          result.S,
+        ]);
+      });
 
       expect(`\n${table.toString()}\n`).toMatchSnapshot();
     });

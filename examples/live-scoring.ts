@@ -1,12 +1,20 @@
 import {BBox} from 'cheap-ruler';
-
-import Table = require('cli-table2');
 import {HorizontalTable} from 'cli-table2';
 
+import Table = require('cli-table2');
+import {formatDuration, formatTime} from '../src/format-result';
 import Point from '../src/geo/point';
 import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
 import {readTask} from '../src/read-task';
+import {
+  calculateDayFactors, calculateDayResult,
+  compareDayResults,
+  createInitialDayResult,
+  createIntermediateDayResult,
+  InitialDayFactors,
+  InitialDayResult,
+} from '../src/scoring';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
@@ -97,47 +105,71 @@ client.onRecord = function(record) {
   }
 };
 
-function compareResults(a: any, b: any) {
-  if (a.speed !== undefined && b.speed === undefined) return -1;
-  if (a.speed === undefined && b.speed !== undefined) return 1;
-  if (a.speed !== undefined && b.speed !== undefined) {
-    if (a.speed > b.speed) return -1;
-    if (a.speed < b.speed) return 1;
-  } else {
-    if (a.distance > b.distance) return -1;
-    if (a.distance < b.distance) return 1;
-  }
-  return 0;
-}
+let initialDayFactors: InitialDayFactors = {
+  // Task Distance [km]
+  // Dt: task.distance / 1000,
+
+  // Minimum Task Time [s]
+  // Td: task.options.aatMinTime || 0,
+
+  // Lowest Handicap (H) of all competitors
+  Ho: Math.min(...filterRows.map(it => it.handicap)) / 100,
+
+  // Minimum Handicapped Distance to validate the Day [km]
+  Dm: 100,
+};
 
 setInterval(() => {
-  let results = filterRows.map(row => {
-    let fixes = fixesById.get(row.ognID)!;
-    let lastFix = fixes[fixes.length - 1];
+  let results: InitialDayResult[] = filterRows.map(filterRow => {
+    let fixes = fixesById.get(filterRow.ognID)!;
 
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
+
     let result = solver.result;
-    result.pilot = row;
-    result.altitude = lastFix && lastFix.altitude;
-    return result;
+
+    let landed = false; // TODO
+
+    let start = result.path[0];
+    let startTimestamp = start && result.distance ? start.time : null;
+
+    // Competitor’s Handicap, if handicapping is being used; otherwise H=1
+    let H = filterRow.handicap / 100;
+
+    let dayResult = (landed || result.completed)
+      ? createInitialDayResult(result, initialDayFactors, H)
+      : createIntermediateDayResult(result, initialDayFactors, H, task, Date.now());
+
+    return { ...dayResult, landed, filterRow, startTimestamp };
   });
 
-  results.sort(compareResults);
+  let dayFactors = calculateDayFactors(results, initialDayFactors);
+
+  let fullResults = results
+    .map(result => calculateDayResult(result, dayFactors))
+    .sort(compareDayResults);
 
   let table = new Table({
-    head: ['WBK', 'Name', 'Dist', 'Speed', 'Altitude'],
-    colAligns: ['left', 'left', 'right', 'right', 'right'],
-    colWidths: [null, null, 10, 13, 10],
+    head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
+    colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
+    colWidths: [null, null, null, null, 10, 10, 10, 13, 7],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
   }) as HorizontalTable;
 
-  results.forEach(result => {
-    let distance = result.distance !== undefined ? `${(result.distance / 1000).toFixed(1)} km` : '';
-    let altitude = result.altitude !== undefined && result.altitude !== null ? `${result.altitude.toFixed(0)} m` : '';
-    let speed = result.speed !== undefined ? `${(result.speed).toFixed(2)} km/h` : '';
+  fullResults.forEach((result: any, i) => {
+    let { filterRow } = result;
 
-    table.push([result.pilot.callsign, result.pilot.pilot, distance, speed, altitude]);
+    table.push([
+      `${result.landed || result._completed ? ' ' : '!'} ${(i + 1)}`,
+      filterRow.callsign,
+      filterRow.pilot,
+      filterRow.type,
+      result.startTimestamp ? formatTime(result.startTimestamp) : '',
+      result._T ? formatDuration(result._T) : '',
+      result._D ? `${result._D.toFixed(1)} km` : '',
+      result._V ? `${result._V.toFixed(2)} km/h` : '',
+      result.S,
+    ]);
   });
 
   logUpdate(`${new Date().toISOString()}\n\n${table.toString()}`);
