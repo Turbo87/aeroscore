@@ -62,19 +62,12 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           }
 
           let result = solver.result;
-          let { completed } = result;
           let startTimestamp = result.path[0].time;
 
           // Competitor’s Handicap, if handicapping is being used; otherwise H=1
           let H = (pilot ? pilot.handicap : 100) / 100;
 
-          // Competitor’s Marking Distance [km]
-          let D = (result.distance || 0) / 1000;
-
-          // Finisher’s Marking Time [s]
-          let T = result.time;
-
-          let dayResult = createInitialDayResult(completed, D, T, H, initialDayFactors);
+          let dayResult = createInitialDayResult(result, initialDayFactors, H);
 
           return { ...dayResult, pilot, landed, startTimestamp };
         });

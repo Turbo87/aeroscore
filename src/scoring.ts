@@ -43,11 +43,15 @@ export function calculateDayFactors(results: InitialDayResult[], initial: Initia
   return { ...initial, Do, Vo, n1, n2, n3, n4, N, To, Pm, F, FCR, Pvm, Pdm };
 }
 
-export function createInitialDayResult(
-  completed: boolean, D: number, T: number, H: number, dayFactors: InitialDayFactors,
-): InitialDayResult {
-
+export function createInitialDayResult(result: any, dayFactors: InitialDayFactors, H: number): InitialDayResult {
+  let { completed } = result;
   let { Ho } = dayFactors;
+
+  // Competitor’s Marking Distance [km]
+  let D = result.distance / 1000;
+
+  // Finisher’s Marking Time [s]
+  let T = result.time;
 
   // Finisher’s Marking Speed. (V = D / T)
   let V = completed ? D / (T / 3600) : 0;
