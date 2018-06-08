@@ -49,8 +49,10 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
           let pilot = pilots.find(it => it.callsign === callsign);
 
-          let landed = true;
+          let landed = true, time = 0;
           for (let fix of flight) {
+            time = fix.time / 1000;
+
             if (untilTimestamp !== null && fix.time > untilTimestamp) {
               landed = false;
               break;
