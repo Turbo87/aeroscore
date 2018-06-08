@@ -77,6 +77,10 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
       let dayFactors = calculateDayFactors(results, initialDayFactors);
 
+      let fullResults = results
+        .map(result => calculateDayResult(result, dayFactors))
+        .sort(compareDayResults);
+
       let table = new Table({
         head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
         colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
@@ -84,24 +88,21 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         style: { head: [], border: [] },
       }) as HorizontalTable;
 
-      results
-        .map(result => calculateDayResult(result, dayFactors))
-        .sort(compareDayResults)
-        .forEach((result: any, i) => {
-          let { pilot } = result;
+      fullResults.forEach((result: any, i) => {
+        let { pilot } = result;
 
-          table.push([
-            `${result.landed || result._completed ? ' ' : '!'} ${(i + 1)}`,
-            pilot.callsign,
-            pilot.pilot,
-            pilot.type,
-            result.startTimestamp ? formatTime(result.startTimestamp) : '',
-            result._T ? formatDuration(result._T) : '',
-            result._D ? `${result._D.toFixed(1)} km` : '',
-            result._V ? `${result._V.toFixed(2)} km/h` : '',
-            result.S,
-          ]);
-        });
+        table.push([
+          `${result.landed || result._completed ? ' ' : '!'} ${(i + 1)}`,
+          pilot.callsign,
+          pilot.pilot,
+          pilot.type,
+          result.startTimestamp ? formatTime(result.startTimestamp) : '',
+          result._T ? formatDuration(result._T) : '',
+          result._D ? `${result._D.toFixed(1)} km` : '',
+          result._V ? `${result._V.toFixed(2)} km/h` : '',
+          result.S,
+        ]);
+      });
 
       expect(`\n${table.toString()}\n`).toMatchSnapshot();
     });
