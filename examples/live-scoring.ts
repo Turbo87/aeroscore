@@ -1,7 +1,5 @@
 import {BBox} from 'cheap-ruler';
-import {HorizontalTable} from 'cli-table2';
 
-import Table = require('cli-table2');
 import {formatDuration, formatTime} from '../src/format-result';
 import Point from '../src/geo/point';
 import GliderTrackerClient from '../src/glidertracker/client';
@@ -18,6 +16,7 @@ import {
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
+const Table = require('cli-table3');
 const logUpdate = require('log-update');
 
 let now = new Date();
@@ -154,7 +153,7 @@ setInterval(() => {
     colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
     colWidths: [null, null, null, null, 10, 10, 10, 13, 7],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
-  }) as HorizontalTable;
+  });
 
   fullResults.forEach((result: any, i) => {
     let { filterRow } = result;

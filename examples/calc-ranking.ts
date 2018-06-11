@@ -1,8 +1,5 @@
 import fs = require('fs');
 
-import Table = require('cli-table2');
-import {HorizontalTable} from 'cli-table2';
-
 import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
@@ -18,6 +15,7 @@ import {
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
+const Table = require('cli-table3');
 const logUpdate = require('log-update');
 
 if (process.argv.length < 3) {
@@ -128,7 +126,7 @@ function tick() {
     colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
     colWidths: [null, null, null, null, 10, 10, 10, 13, 7],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
-  }) as HorizontalTable;
+  });
 
   fullResults.forEach((result: any, i) => {
     let { filterRow } = result;
