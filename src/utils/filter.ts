@@ -2,12 +2,12 @@ import fs = require('fs');
 
 import {csvParse} from 'd3-dsv';
 
-export function readFromFile(path: string) {
+export function readFromFile(path: string): Competitor[] {
   let content = fs.readFileSync(path, 'utf8');
   return parse(content);
 }
 
-export function parse(content: string) {
+export function parse(content: string): Competitor[] {
   return csvParse(content, row => ({
     ognID: row.ID || '',
     registration: row.CALL || '',
@@ -18,7 +18,7 @@ export function parse(content: string) {
   }));
 }
 
-export function readHandicapsFromFile(path: string) {
+export function readHandicapsFromFile(path: string): { [key: string]: number } {
   let handicaps = Object.create(null);
   readFromFile(path).forEach(({ callsign, handicap }) => {
     if (callsign) {
@@ -26,4 +26,13 @@ export function readHandicapsFromFile(path: string) {
     }
   });
   return handicaps;
+}
+
+interface Competitor {
+  ognID: string;
+  registration: string;
+  callsign: string;
+  type: string;
+  pilot: string;
+  handicap: number;
 }
