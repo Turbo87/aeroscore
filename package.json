@@ -31,12 +31,11 @@
     "xml-js": "^1.6.4"
   },
   "devDependencies": {
-    "@types/cli-table2": "^0.2.1",
     "@types/d3-dsv": "^1.0.33",
     "@types/geojson": "^7946.0.3",
     "@types/jest": "^23.0.2",
     "@types/node": "^6.0.83",
-    "cli-table2": "^0.2.0",
+    "cli-table3": "^0.5.0",
     "d3-dsv": "^1.0.8",
     "jest": "^23.1.0",
     "log-update": "^2.3.0",

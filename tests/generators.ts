@@ -1,8 +1,5 @@
 import fs = require('fs');
 
-import Table = require('cli-table2');
-import {HorizontalTable} from 'cli-table2';
-
 import {formatDuration, formatTime} from '../src/format-result';
 import {readFlight} from '../src/read-flight';
 import {readTask} from '../src/read-task';
@@ -17,6 +14,8 @@ import {
 } from '../src/scoring';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
+
+const Table = require('cli-table3');
 
 const FIXTURES_PATH = `${__dirname}/../fixtures`;
 
@@ -86,7 +85,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
         chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
         style: { head: [], border: [] },
-      }) as HorizontalTable;
+      });
 
       fullResults.forEach((result: any, i) => {
         let { pilot } = result;
