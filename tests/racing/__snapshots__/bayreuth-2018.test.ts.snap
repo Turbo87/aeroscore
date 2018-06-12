@@ -2,35 +2,35 @@
 
 exports[`Racing Task "Bayreuth/2018-05-30/Open" final result 1`] = `
 "
-┌──────┬─────┬──────────────────────┬─────────────┬──────────┬──────────┬──────────┬─────────────┬───────┐
-│    # │ WBK │ Name                 │ Plane       │    Start │     Time │     Dist │       Speed │ Score │
-│    1 │ HS  │ Horst Singer         │ EB 29       │ 12:43:08 │ 03:03:56 │ 312.3 km │ 101.87 km/h │  1000 │
-│    2 │ FO  │ Max Kollmar          │ Nimbus 4t   │ 12:42:38 │ 03:04:25 │ 312.3 km │ 101.60 km/h │   995 │
-│    3 │ VX  │ Rolf Gertzmann       │ ASH 31Mi    │ 12:42:51 │ 03:05:59 │ 312.3 km │ 100.75 km/h │   978 │
-│    4 │ FJ  │ Sebastian Eder       │ EB 29R      │ 12:50:08 │ 03:06:16 │ 312.3 km │ 100.60 km/h │   975 │
-│    5 │ RB  │ Peter Pollack        │ EB 28       │ 12:40:25 │ 03:06:44 │ 312.3 km │ 100.35 km/h │   970 │
-│    6 │ NY  │ Norbert Kalisch      │ ASW 22BLE   │ 12:40:03 │ 03:06:57 │ 312.3 km │ 100.22 km/h │   968 │
-│    7 │ WR  │ Reinhard Spath       │ ASW 22BLE   │ 12:46:49 │ 03:10:41 │ 312.3 km │  98.27 km/h │   929 │
-│    8 │ FU  │ Uwe Förster          │ EB 29D      │ 12:40:15 │ 03:10:45 │ 312.3 km │  98.23 km/h │   929 │
-│    9 │ VY  │ Andreas Kühl         │ JS1 C       │ 12:40:01 │ 03:10:47 │ 312.3 km │  98.22 km/h │   928 │
-│   10 │ ET  │ Carsten Portmann     │ Nimbus 4    │ 12:23:31 │ 03:11:47 │ 312.3 km │  97.70 km/h │   918 │
-│   11 │ AM  │ Alexander Müller     │ EB 29       │ 12:44:38 │ 03:12:19 │ 312.3 km │  97.43 km/h │   913 │
-│   12 │ VH  │ Helmut Bauer         │ ASW 22BLE   │ 12:46:05 │ 03:13:20 │ 312.3 km │  96.92 km/h │   903 │
-│   13 │ KV  │ Kornelius Volosciuk  │ ASW 22BLE   │ 12:44:21 │ 03:13:44 │ 312.3 km │  96.72 km/h │   899 │
-│   14 │ IM  │ Sebastian Tschorn    │ ASH 25E     │ 12:42:56 │ 03:13:53 │ 312.3 km │  96.65 km/h │   897 │
-│   15 │ YY  │ Bruno Gantenbrink    │ Nimeta X    │ 12:35:10 │ 03:16:52 │ 312.3 km │  95.18 km/h │   869 │
-│   16 │ LY  │ Kai Lindenberg       │ ASH 25 EB28 │ 12:40:22 │ 03:18:29 │ 312.3 km │  94.40 km/h │   853 │
-│   17 │ MM  │ Stephan Beck         │ ASW 22BLE   │ 12:24:36 │ 03:19:57 │ 312.3 km │  93.71 km/h │   840 │
-│   18 │ NX  │ Ulrich Knauß         │ EB 28       │ 12:09:18 │ 03:26:42 │ 312.3 km │  90.65 km/h │   780 │
-│   19 │ MD  │ Jens Becker          │ JS1 C       │ 12:36:48 │ 03:26:50 │ 312.3 km │  90.59 km/h │   779 │
-│   20 │ TEX │ Benno Beesten        │ Nimbus 4M   │ 12:36:39 │ 03:27:02 │ 312.3 km │  90.51 km/h │   777 │
-│   21 │ QAX │ Heiko Hertrich       │ ASH 25      │ 12:14:59 │ 03:40:51 │ 312.3 km │  84.84 km/h │   666 │
-│   22 │ W1  │ Hans Jürgen Schmacht │ ASG 32Mi    │ 12:42:45 │ 03:44:11 │ 312.3 km │  83.58 km/h │   641 │
-│   23 │ DF  │ Julius Hoffelner     │ ASH 25      │ 12:14:51 │ 03:44:15 │ 312.3 km │  83.56 km/h │   641 │
-│   24 │ EPI │ Gerhard Bender       │ Nimbus 4DM  │ 12:32:09 │ 03:53:53 │ 312.3 km │  80.11 km/h │   573 │
-│   25 │ LM  │ Olaf Merbt           │ ASH 25E     │ 12:30:24 │ 03:55:54 │ 312.3 km │  79.43 km/h │   559 │
-│   26 │ TOY │ Thomas Kuhn          │ ASG 29E     │ 12:48:05 │ 04:13:40 │ 312.3 km │  73.87 km/h │   450 │
-│   27 │ JOY │ Jürgen Schuster      │ ASG 29E     │ 12:48:01 │ 04:24:07 │ 312.3 km │  70.94 km/h │   393 │
-└──────┴─────┴──────────────────────┴─────────────┴──────────┴──────────┴──────────┴─────────────┴───────┘
+┌──────┬─────┬──────────────────────┬─────────────┬──────────┬──────────┬──────────┬─────────────┬───────┬───────┐
+│    # │ WBK │ Name                 │ Plane       │    Start │     Time │     Dist │       Speed │ Score │  Alt. │
+│    1 │ HS  │ Horst Singer         │ EB 29       │ 12:43:08 │ 03:03:56 │ 312.3 km │ 101.87 km/h │  1000 │ 487 m │
+│    2 │ FO  │ Max Kollmar          │ Nimbus 4t   │ 12:42:38 │ 03:04:25 │ 312.3 km │ 101.60 km/h │   995 │ 490 m │
+│    3 │ VX  │ Rolf Gertzmann       │ ASH 31Mi    │ 12:42:51 │ 03:05:59 │ 312.3 km │ 100.75 km/h │   978 │ 484 m │
+│    4 │ FJ  │ Sebastian Eder       │ EB 29R      │ 12:50:08 │ 03:06:16 │ 312.3 km │ 100.60 km/h │   975 │ 537 m │
+│    5 │ RB  │ Peter Pollack        │ EB 28       │ 12:40:25 │ 03:06:44 │ 312.3 km │ 100.35 km/h │   970 │ 490 m │
+│    6 │ NY  │ Norbert Kalisch      │ ASW 22BLE   │ 12:40:03 │ 03:06:57 │ 312.3 km │ 100.22 km/h │   968 │ 489 m │
+│    7 │ WR  │ Reinhard Spath       │ ASW 22BLE   │ 12:46:49 │ 03:10:41 │ 312.3 km │  98.27 km/h │   929 │ 537 m │
+│    8 │ FU  │ Uwe Förster          │ EB 29D      │ 12:40:15 │ 03:10:45 │ 312.3 km │  98.23 km/h │   929 │ 486 m │
+│    9 │ VY  │ Andreas Kühl         │ JS1 C       │ 12:40:01 │ 03:10:47 │ 312.3 km │  98.22 km/h │   928 │ 489 m │
+│   10 │ ET  │ Carsten Portmann     │ Nimbus 4    │ 12:23:31 │ 03:11:47 │ 312.3 km │  97.70 km/h │   918 │ 488 m │
+│   11 │ AM  │ Alexander Müller     │ EB 29       │ 12:44:38 │ 03:12:19 │ 312.3 km │  97.43 km/h │   913 │ 483 m │
+│   12 │ VH  │ Helmut Bauer         │ ASW 22BLE   │ 12:46:05 │ 03:13:20 │ 312.3 km │  96.92 km/h │   903 │ 489 m │
+│   13 │ KV  │ Kornelius Volosciuk  │ ASW 22BLE   │ 12:44:21 │ 03:13:44 │ 312.3 km │  96.72 km/h │   899 │ 484 m │
+│   14 │ IM  │ Sebastian Tschorn    │ ASH 25E     │ 12:42:56 │ 03:13:53 │ 312.3 km │  96.65 km/h │   897 │ 490 m │
+│   15 │ YY  │ Bruno Gantenbrink    │ Nimeta X    │ 12:35:10 │ 03:16:52 │ 312.3 km │  95.18 km/h │   869 │ 535 m │
+│   16 │ LY  │ Kai Lindenberg       │ ASH 25 EB28 │ 12:40:22 │ 03:18:29 │ 312.3 km │  94.40 km/h │   853 │ 510 m │
+│   17 │ MM  │ Stephan Beck         │ ASW 22BLE   │ 12:24:36 │ 03:19:57 │ 312.3 km │  93.71 km/h │   840 │ 492 m │
+│   18 │ NX  │ Ulrich Knauß         │ EB 28       │ 12:09:18 │ 03:26:42 │ 312.3 km │  90.65 km/h │   780 │ 537 m │
+│   19 │ MD  │ Jens Becker          │ JS1 C       │ 12:36:48 │ 03:26:50 │ 312.3 km │  90.59 km/h │   779 │ 531 m │
+│   20 │ TEX │ Benno Beesten        │ Nimbus 4M   │ 12:36:39 │ 03:27:02 │ 312.3 km │  90.51 km/h │   777 │ 491 m │
+│   21 │ QAX │ Heiko Hertrich       │ ASH 25      │ 12:14:59 │ 03:40:51 │ 312.3 km │  84.84 km/h │   666 │ 490 m │
+│   22 │ W1  │ Hans Jürgen Schmacht │ ASG 32Mi    │ 12:42:45 │ 03:44:11 │ 312.3 km │  83.58 km/h │   641 │ 496 m │
+│   23 │ DF  │ Julius Hoffelner     │ ASH 25      │ 12:14:51 │ 03:44:15 │ 312.3 km │  83.56 km/h │   641 │ 489 m │
+│   24 │ EPI │ Gerhard Bender       │ Nimbus 4DM  │ 12:32:09 │ 03:53:53 │ 312.3 km │  80.11 km/h │   573 │ 487 m │
+│   25 │ LM  │ Olaf Merbt           │ ASH 25E     │ 12:30:24 │ 03:55:54 │ 312.3 km │  79.43 km/h │   559 │ 483 m │
+│   26 │ TOY │ Thomas Kuhn          │ ASG 29E     │ 12:48:05 │ 04:13:40 │ 312.3 km │  73.87 km/h │   450 │ 537 m │
+│   27 │ JOY │ Jürgen Schuster      │ ASG 29E     │ 12:48:01 │ 04:24:07 │ 312.3 km │  70.94 km/h │   393 │ 486 m │
+└──────┴─────┴──────────────────────┴─────────────┴──────────┴──────────┴──────────┴─────────────┴───────┴───────┘
 "
 `;

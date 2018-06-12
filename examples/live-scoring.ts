@@ -125,6 +125,9 @@ setInterval(() => {
     let solver = new RacingTaskSolver(task);
     solver.consume(fixes);
 
+    let lastFix = fixes[fixes.length - 1];
+    let altitude = lastFix ? lastFix.altitude : null;
+
     let result = solver.result;
 
     let landed = false; // TODO
@@ -139,7 +142,7 @@ setInterval(() => {
       ? createInitialDayResult(result, initialDayFactors, H)
       : createIntermediateDayResult(result, initialDayFactors, H, task, Date.now());
 
-    return { ...dayResult, landed, filterRow, startTimestamp };
+    return { ...dayResult, landed, filterRow, startTimestamp, altitude };
   });
 
   let dayFactors = calculateDayFactors(results, initialDayFactors);
@@ -149,9 +152,9 @@ setInterval(() => {
     .sort(compareDayResults);
 
   let table = new Table({
-    head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
-    colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
-    colWidths: [null, null, null, null, 10, 10, 10, 13, 7],
+    head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score', 'Alt.'],
+    colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
+    colWidths: [null, null, null, null, 10, 10, 10, 13, 7, 8],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
   });
 
@@ -168,6 +171,7 @@ setInterval(() => {
       result._D ? `${result._D.toFixed(1)} km` : '',
       result._V ? `${result._V.toFixed(2)} km/h` : '',
       result.S,
+      result.altitude !== null ? `${result.altitude} m` : '',
     ]);
   });
 

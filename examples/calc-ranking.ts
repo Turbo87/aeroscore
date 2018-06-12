@@ -108,11 +108,14 @@ function tick() {
     // Competitor’s Handicap, if handicapping is being used; otherwise H=1
     let H = filterRow.handicap / 100;
 
+    let lastFix = flights[callsign][indexes[callsign]];
+    let altitude = lastFix ? lastFix.altitude : null;
+
     let dayResult = (landed || result.completed)
       ? createInitialDayResult(result, initialDayFactors, H)
       : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 
-    return { ...dayResult, landed, filterRow, startTimestamp };
+    return { ...dayResult, landed, filterRow, startTimestamp, altitude };
   });
 
   let dayFactors = calculateDayFactors(results, initialDayFactors);
@@ -122,9 +125,9 @@ function tick() {
     .sort(compareDayResults);
 
   let table = new Table({
-    head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
-    colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
-    colWidths: [null, null, null, null, 10, 10, 10, 13, 7],
+    head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score', 'Alt.'],
+    colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
+    colWidths: [null, null, null, null, 10, 10, 10, 13, 7, 8],
     chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
   });
 
@@ -141,6 +144,7 @@ function tick() {
       result._D ? `${result._D.toFixed(1)} km` : '',
       result._V ? `${result._V.toFixed(2)} km/h` : '',
       result.S,
+      result.altitude !== null ? `${result.altitude} m` : '',
     ]);
   });
 

@@ -49,9 +49,10 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
           let pilot = pilots.find(it => it.callsign === callsign);
 
-          let landed = true, time = 0;
+          let landed = true, time = 0, altitude;
           for (let fix of flight) {
             time = fix.time / 1000;
+            altitude = fix.altitude;
 
             if (untilTimestamp !== null && fix.time > untilTimestamp) {
               landed = false;
@@ -71,7 +72,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
             ? createInitialDayResult(result, initialDayFactors, H)
             : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 
-          return { ...dayResult, pilot, landed, startTimestamp };
+          return { ...dayResult, pilot, landed, startTimestamp, altitude };
         });
 
       let dayFactors = calculateDayFactors(results, initialDayFactors);
@@ -81,8 +82,8 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
         .sort(compareDayResults);
 
       let table = new Table({
-        head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score'],
-        colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right'],
+        head: ['#', 'WBK', 'Name', 'Plane', 'Start', 'Time', 'Dist', 'Speed', 'Score', 'Alt.'],
+        colAligns: ['right', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
         chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
         style: { head: [], border: [] },
       });
@@ -100,6 +101,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           result._D ? `${result._D.toFixed(1)} km` : '',
           result._V ? `${result._V.toFixed(2)} km/h` : '',
           result.S,
+          result.altitude !== null ? `${result.altitude} m` : '',
         ]);
       });
 
