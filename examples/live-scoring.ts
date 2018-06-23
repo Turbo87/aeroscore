@@ -13,6 +13,7 @@ import {
   InitialDayFactors,
   InitialDayResult,
 } from '../src/scoring';
+import AreaTaskSolver from '../src/task/solver/area-task-solver';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
@@ -34,11 +35,6 @@ if (process.argv.length < 4) {
 
 let taskPath = process.argv[2];
 let task = readTask(taskPath);
-
-if (task.options.isAAT) {
-  console.log('AAT tasks are not supported yet');
-  process.exit(1);
-}
 
 let filterRows = readFromFile(process.argv[3]);
 
@@ -122,7 +118,10 @@ setInterval(() => {
   let results: InitialDayResult[] = filterRows.map(filterRow => {
     let fixes = fixesById.get(filterRow.ognID)!;
 
-    let solver = new RacingTaskSolver(task);
+    let solver = task.options.isAAT
+      ? new AreaTaskSolver(task)
+      : new RacingTaskSolver(task);
+
     solver.consume(fixes);
 
     let lastFix = fixes[fixes.length - 1];
@@ -138,7 +137,7 @@ setInterval(() => {
     // Competitor’s Handicap, if handicapping is being used; otherwise H=1
     let H = filterRow.handicap / 100;
 
-    let dayResult = (landed || result.completed)
+    let dayResult = (landed || result.completed || task.options.isAAT)
       ? createInitialDayResult(result, initialDayFactors, H)
       : createIntermediateDayResult(result, initialDayFactors, H, task, Date.now());
 
