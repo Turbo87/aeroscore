@@ -110,8 +110,13 @@ export default class AreaTaskSolver {
     // the uncompleted leg is less than zero, it shall be taken as zero.
 
     let nextArea = this.task.points[currentlegIndex + 1];
-    let nextAreaLine = nextArea.shape.toGeoJSON().geometry.coordinates[0];
-    let nextAreaNearestPoint = this.task['_ruler'].pointOnLine(nextAreaLine, fix.coordinate).point;
+    let nextAreaNearestPoint;
+    if (currentlegIndex === this.task.legs.length - 1) {
+      nextAreaNearestPoint = this.task.finish.shape.center;
+    } else {
+      let nextAreaLine = nextArea.shape.toGeoJSON().geometry.coordinates[0];
+      nextAreaNearestPoint = this.task['_ruler'].pointOnLine(nextAreaLine, fix.coordinate).point;
+    }
     let nextAreaDistance = this.task.measureDistance(fix.coordinate, nextAreaNearestPoint);
 
     if (currentlegIndex === 0) {
