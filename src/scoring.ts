@@ -66,10 +66,10 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
   V = _V = completed ? D / (T / 3600) : 0;
 
   // Competitor’s Handicapped Distance. (Dh = D x Ho / H) [km]
-  let Dh = D * (Ho / H);
+  let Dh = D * (Ho / H) || 0;
 
   // Finisher’s Handicapped Speed. (Vh = D / T x Ho / H)
-  let Vh = V * (Ho / H);
+  let Vh = V * (Ho / H) || 0;
 
   return { completed, _completed, D, _D, H, Dh, T, _T, V, _V, Vh };
 }

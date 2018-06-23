@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreaTaskSolver 2017-07-15-lev - 1 final result 1`] = `
+Object {
+  "completed": true,
+  "distance": 251207.33,
+  "path": Array [
+    Object {
+      "altitude": 1253.6009,
+      "coordinate": lon 7.0053203 lat 51.1211702,
+      "time": 2017-07-15T11:18:08.399Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 950,
+      "coordinate": lon 6.1728000 lat 50.7624500,
+      "time": 2017-07-15T12:21:31.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1262,
+      "coordinate": lon 6.9956667 lat 50.4961000,
+      "time": 2017-07-15T13:16:06.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1280,
+      "coordinate": lon 6.5081333 lat 50.8485000,
+      "time": 2017-07-15T13:57:32.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 889,
+      "coordinate": lon 7.0609500 lat 51.1928500,
+      "time": 2017-07-15T14:39:33.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 692.00586,
+      "coordinate": lon 7.0325999 lat 51.1155508,
+      "time": 2017-07-15T14:45:21.997Z,
+      "valid": true,
+    },
+  ],
+  "speed": 71.773522,
+  "time": 12433.598,
+}
+`;
+
+exports[`AreaTaskSolver 2017-07-15-lev - P9 final result 1`] = `
+Object {
+  "completed": true,
+  "distance": 299195.36,
+  "path": Array [
+    Object {
+      "altitude": 1313.8195,
+      "coordinate": lon 6.9773376 lat 51.1493988,
+      "time": 2017-07-15T11:04:38.590Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 901,
+      "coordinate": lon 6.0947667 lat 50.8538500,
+      "time": 2017-07-15T12:01:16.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1344,
+      "coordinate": lon 6.9148333 lat 50.3794000,
+      "time": 2017-07-15T12:52:15.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1161,
+      "coordinate": lon 6.4154333 lat 50.9131667,
+      "time": 2017-07-15T13:42:45.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1309,
+      "coordinate": lon 7.2196667 lat 51.2161500,
+      "time": 2017-07-15T14:31:17.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 673.63183,
+      "coordinate": lon 7.0578194 lat 51.1100511,
+      "time": 2017-07-15T14:38:12.684Z,
+      "valid": true,
+    },
+  ],
+  "speed": 84.056142,
+  "time": 12814.094,
+}
+`;
+
+exports[`AreaTaskSolver 2017-07-15-lev - SW 2017-07-15T12:00:00Z 1`] = `
+Object {
+  "completed": false,
+  "distance": 71060.548,
+  "path": Array [
+    Object {
+      "altitude": 1230.4661,
+      "coordinate": lon 6.9761190 lat 51.1506282,
+      "time": 2017-07-15T10:54:07.524Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 989,
+      "coordinate": lon 6.1584333 lat 50.8080000,
+      "time": 2017-07-15T11:54:49.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1409,
+      "coordinate": lon 6.1883000 lat 50.7990333,
+      "time": 2017-07-15T12:00:00.000Z,
+      "valid": true,
+    },
+  ],
+  "speed": 64.723476,
+  "time": 3952.4758,
+}
+`;
+
+exports[`AreaTaskSolver 2017-07-15-lev - SW final result 1`] = `
+Object {
+  "completed": true,
+  "distance": 227163.36,
+  "path": Array [
+    Object {
+      "altitude": 1230.4661,
+      "coordinate": lon 6.9761190 lat 51.1506282,
+      "time": 2017-07-15T10:54:07.524Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 991,
+      "coordinate": lon 6.1584000 lat 50.8091333,
+      "time": 2017-07-15T11:54:54.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1496,
+      "coordinate": lon 6.7288667 lat 50.5417333,
+      "time": 2017-07-15T12:58:19.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1374.4255,
+      "coordinate": lon 6.3646274 lat 50.8483158,
+      "time": 2017-07-15T13:38:23.826Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 825,
+      "coordinate": lon 7.1275000 lat 51.1165000,
+      "time": 2017-07-15T14:23:36.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 670.71980,
+      "coordinate": lon 7.0654292 lat 51.0990425,
+      "time": 2017-07-15T14:26:31.350Z,
+      "valid": true,
+    },
+  ],
+  "speed": 64.171315,
+  "time": 12743.826,
+}
+`;
+
+exports[`AreaTaskSolver 2017-07-15-lev - XN final result 1`] = `
+Object {
+  "completed": false,
+  "distance": 124525.47,
+  "path": Array [
+    Object {
+      "altitude": 1242.1311,
+      "coordinate": lon 7.0098134 lat 51.1166377,
+      "time": 2017-07-15T10:52:28.868Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1240,
+      "coordinate": lon 6.3272667 lat 50.8212667,
+      "time": 2017-07-15T11:52:00.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 1038,
+      "coordinate": lon 6.8714000 lat 50.3965500,
+      "time": 2017-07-15T12:37:10.000Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 718,
+      "coordinate": lon 6.8020333 lat 50.4299667,
+      "time": 2017-07-15T12:40:40.000Z,
+      "valid": true,
+    },
+  ],
+  "speed": 61.704554,
+  "time": 7265.1311,
+}
+`;
+
+exports[`AreaTaskSolver 2017-07-15-lev - ZG final result 1`] = `
+Object {
+  "completed": false,
+  "distance": 43099.650,
+  "path": Array [
+    Object {
+      "altitude": 1147.3581,
+      "coordinate": lon 6.9985569 lat 51.1279930,
+      "time": 2017-07-15T11:16:48.641Z,
+      "valid": true,
+    },
+    Object {
+      "altitude": 525,
+      "coordinate": lon 6.5061667 lat 50.8855333,
+      "time": 2017-07-15T12:01:22.000Z,
+      "valid": true,
+    },
+  ],
+  "speed": 47.897989,
+  "time": 3239.3581,
+}
+`;
