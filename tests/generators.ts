@@ -12,6 +12,7 @@ import {
   InitialDayFactors,
   InitialDayResult,
 } from '../src/scoring';
+import AreaTaskSolver from '../src/task/solver/area-task-solver';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
 import {readFromFile} from '../src/utils/filter';
 
@@ -19,14 +20,15 @@ const Table = require('cli-table3');
 
 const FIXTURES_PATH = `${__dirname}/../fixtures`;
 
-export function generateRacingTest(fixtureName: string, until: string | null = null) {
-  describe(`Racing Task "${fixtureName}"`, () => {
+export function generateTest(fixtureName: string, until: string | null = null) {
+  let task = readTask(`${FIXTURES_PATH}/${fixtureName}/task.tsk`);
+
+  describe(`${task.options.isAAT ? 'AAT' : 'Racing'} Task "${fixtureName}"`, () => {
     let testName = until ? `result after ${until}` : `final result`;
 
     test(testName, () => {
       let untilTimestamp = until ? Date.parse(until) : null;
 
-      let task = readTask(`${FIXTURES_PATH}/${fixtureName}/task.tsk`);
       let pilots = readFromFile(`${FIXTURES_PATH}/${fixtureName}/filter.csv`);
 
       let initialDayFactors: InitialDayFactors = {
@@ -45,7 +47,9 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
 
       let results: InitialDayResult[] = findFlights(`${FIXTURES_PATH}/${fixtureName}/`)
         .map(({ callsign, flight }) => {
-          let solver = new RacingTaskSolver(task);
+          let solver = task.options.isAAT
+            ? new AreaTaskSolver(task)
+            : new RacingTaskSolver(task);
 
           let pilot = pilots.find(it => it.callsign === callsign);
 
@@ -68,7 +72,7 @@ export function generateRacingTest(fixtureName: string, until: string | null = n
           // Competitor’s Handicap, if handicapping is being used; otherwise H=1
           let H = (pilot ? pilot.handicap : 100) / 100;
 
-          let dayResult = (landed || result.completed)
+          let dayResult = (landed || result.completed || task.options.isAAT)
             ? createInitialDayResult(result, initialDayFactors, H)
             : createIntermediateDayResult(result, initialDayFactors, H, task, time);
 

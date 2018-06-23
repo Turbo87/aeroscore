@@ -1,3 +1,3 @@
-import {generateRacingTest} from '../generators';
+import {generateTest} from '../generators';
 
-generateRacingTest('Bayreuth/2018-05-30/Open');
+generateTest('Bayreuth/2018-05-30/Open');
