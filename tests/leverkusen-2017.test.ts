@@ -1,4 +1,4 @@
-import {generateTest} from '../generators';
+import {generateTest} from './generators';
 
 generateTest('2017-07-15-lev');
 generateTest('2017-07-17-lev');
