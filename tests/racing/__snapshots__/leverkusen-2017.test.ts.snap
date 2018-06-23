@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AAT Task "2017-07-15-lev" final result 1`] = `
+"
+┌──────┬─────┬─────────────────────────┬──────────────┬──────────┬──────────┬──────────┬────────────┬───────┬───────┐
+│    # │ WBK │ Name                    │ Plane        │    Start │     Time │     Dist │      Speed │ Score │  Alt. │
+│    1 │ P9  │ Hauke Schmoranzer       │ LS-4 WL      │ 11:04:39 │ 03:33:34 │ 299.2 km │ 84.06 km/h │  1000 │  51 m │
+│    2 │ IGP │ Tobias Pachowsky        │ LS-4         │ 11:02:19 │ 03:31:37 │ 291.7 km │ 82.71 km/h │   975 │  79 m │
+│    3 │ E1  │ Max Böswald             │ LS-4         │ 11:02:26 │ 03:31:26 │ 285.4 km │ 80.99 km/h │   943 │ 103 m │
+│    4 │ 1   │ Nils Ruckert            │ LS-1f neo    │ 11:18:08 │ 03:27:14 │ 251.2 km │ 72.73 km/h │   829 │  50 m │
+│    5 │ T   │ Julius Lübstorf         │ LS-4         │ 10:53:32 │ 03:35:34 │ 265.1 km │ 73.78 km/h │   809 │  49 m │
+│    6 │ 33  │ Frederik Wendland       │ Libelle      │ 10:52:19 │ 03:36:56 │ 249.9 km │ 69.11 km/h │   800 │  46 m │
+│    7 │ SW  │ Torben Raatz            │ Std. Libelle │ 10:54:08 │ 03:32:24 │ 227.2 km │ 64.17 km/h │   703 │  46 m │
+│    8 │ 1G  │ Florian Graf            │ ASW-19       │ 10:54:03 │ 03:36:38 │ 238.4 km │ 66.02 km/h │   701 │  50 m │
+│    9 │ EI  │ Mike Bauer              │ Discus       │ 11:02:31 │ 03:42:31 │ 255.2 km │ 68.81 km/h │   680 │  49 m │
+│   10 │ LC  │ Steffen Dringenberg     │ LS-4         │ 11:37:37 │ 03:30:30 │ 232.6 km │ 66.29 km/h │   669 │  92 m │
+│   11 │ TA  │ Wilhelm Klomp-Alexander │ LS-1f        │ 10:52:58 │ 03:28:02 │ 223.0 km │ 64.33 km/h │   668 │  46 m │
+│   12 │ WJ  │ Elena Mascus            │ LS-4 WL      │ 10:53:26 │ 03:31:03 │ 230.9 km │ 65.63 km/h │   657 │  45 m │
+│   13 │ MS  │ Marius Stelzer          │ LS-1d        │ 11:18:24 │ 03:35:10 │ 220.6 km │ 61.51 km/h │   650 │  92 m │
+│   14 │ JM  │ Wilm Ahrens             │ ASW-19b      │ 10:58:36 │ 03:52:27 │ 244.5 km │ 63.10 km/h │   645 │  88 m │
+│   15 │ MI  │ Till Schmidt            │ LS-4         │ 10:51:56 │ 03:33:21 │ 227.3 km │ 63.93 km/h │   625 │  45 m │
+│   16 │ 1R  │ Lars Liebert            │ LS-4         │ 11:22:10 │ 03:29:59 │ 220.0 km │ 62.87 km/h │   606 │  45 m │
+│   17 │ FR  │ Kevin Lippold           │ Std. Libelle │ 10:52:45 │ 03:33:05 │ 206.7 km │ 58.20 km/h │   585 │  42 m │
+│   18 │ 999 │ Julius Hanßen           │ DG-100       │ 11:18:23 │ 03:45:42 │ 222.5 km │ 59.15 km/h │   580 │  91 m │
+│   19 │ XN  │ Ulrich Luta             │ LS-1d        │ 10:52:29 │ 02:01:05 │ 124.5 km │            │   211 │ 491 m │
+│   20 │ sq  │ Carsten Richartz        │ Mosquito     │ 11:07:41 │ 01:29:40 │  85.8 km │            │   133 │ 385 m │
+│   21 │ T1  │ Moritz Lübstorf         │ LS-4         │ 10:55:35 │ 01:33:04 │  82.6 km │            │   132 │ 267 m │
+│   22 │ H1  │ Karl Janek Grünthaler   │ DG-303       │ 11:22:15 │ 00:52:26 │  44.7 km │            │    71 │  79 m │
+│   23 │ ZG  │ Philipp Rekitt          │ LS-4b        │ 11:16:49 │ 00:53:59 │  43.1 km │            │    69 │ 102 m │
+└──────┴─────┴─────────────────────────┴──────────────┴──────────┴──────────┴──────────┴────────────┴───────┴───────┘
+"
+`;
+
 exports[`Racing Task "2017-07-17-lev" final result 1`] = `
 "
 ┌──────┬─────┬───────────────────────┬──────────────┬──────────┬──────────┬──────────┬────────────┬───────┬───────┐
