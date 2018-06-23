@@ -53,7 +53,7 @@ export default class AreaTaskSolver {
    * The `_maxDistanceData` property is used to track the best intermediate
    * solution as long as the task was not finished yet.
    */
-  private _maxDistanceData?: MaxDistanceData;
+  private bestSolution?: Solution;
 
   /**
    * The `_map` property holds a mapping from GPS fix to the graph edge with
@@ -122,8 +122,8 @@ export default class AreaTaskSolver {
     if (currentlegIndex === 0) {
       let distance = this.task.measureDistance(this.task.start.shape.center, nextAreaNearestPoint) - nextAreaDistance;
       if (distance > 0) {
-        if (!this._maxDistanceData || distance > this._maxDistanceData.distance) {
-          this._maxDistanceData = { distance, fix };
+        if (!this.bestSolution || distance > this.bestSolution.lastEdge.distance) {
+          this.bestSolution = { lastFix: fix, lastEdge: { distance } };
         }
       }
 
@@ -151,8 +151,8 @@ export default class AreaTaskSolver {
       assert(max.prevFix);
 
       if (max.distance > 0) {
-        if (!this._maxDistanceData || max.distance > this._maxDistanceData.distance) {
-          this._maxDistanceData = {distance: max.distance, fix, prevFix: max.prevFix};
+        if (!this.bestSolution || max.distance > this.bestSolution.lastEdge.distance) {
+          this.bestSolution = { lastFix: fix, lastEdge: { distance: max.distance, prevFix: max.prevFix } };
         }
       }
     }
@@ -196,28 +196,11 @@ export default class AreaTaskSolver {
 
       // trace back the path through the edges
       // (essentially converts linked list to array)
-      let path = [this._tracker.finish];
-
-      let edge = finishEdge;
-      while (edge.prevFix) {
-        path.push(edge.prevFix);
-        edge = this._map.get(edge.prevFix)!;
-      }
-
-      let firstAreaFix = path[path.length - 1]!;
-      assert(firstAreaFix);
-
-      let start = this._tracker.starts.slice()
-        .reverse()
-        .find(fix => fix.time < firstAreaFix.time)!;
-      assert(start);
-
-      path.push(start);
-
-      path.reverse();
+      let finishSolution = { lastFix: this._tracker.finish!, lastEdge: finishEdge };
+      let path = this.pathForSolution(finishSolution, this._tracker.starts);
 
       // calculate actual time
-      let time = (this._tracker.finish!.time - start.time) / 1000;
+      let time = (this._tracker.finish!.time - path[0].time) / 1000;
 
       // calculate marking time
       let scoringTime = time < this.task.options.aatMinTime
@@ -237,7 +220,7 @@ export default class AreaTaskSolver {
     }
 
     // if we don't have data yet we can't return anything useful
-    if (!this._maxDistanceData) {
+    if (!this.bestSolution) {
       return {
         completed: false,
         time: undefined,
@@ -248,32 +231,14 @@ export default class AreaTaskSolver {
     }
 
     // calculate marking distance
-    let distance = this._maxDistanceData.distance * 1000;
+    let distance = this.bestSolution.lastEdge.distance * 1000;
 
     // trace back the path through the edges
     // (essentially converts linked list to array)
-    let path = [this._maxDistanceData.fix];
-
-    let edge = this._maxDistanceData as Edge;
-    while (edge.prevFix) {
-      path.push(edge.prevFix);
-      edge = this._map.get(edge.prevFix)!;
-    }
-
-    let firstAreaFix = path[path.length - 1]!;
-    assert(firstAreaFix);
-
-    let start = this._tracker.starts.slice()
-      .reverse()
-      .find(fix => fix.time < firstAreaFix.time)!;
-    assert(start);
-
-    path.push(start);
-
-    path.reverse();
+    let path = this.pathForSolution(this.bestSolution, this._tracker.starts);
 
     // calculate current marking time
-    let time = (this._lastFix!.time - start.time) / 1000;
+    let time = (this._lastFix!.time - path[0].time) / 1000;
 
     // calculate current marking speed
     let speed = (distance / 1000) / (time / 3600);
@@ -285,6 +250,30 @@ export default class AreaTaskSolver {
       speed,
       path,
     };
+  }
+
+  private pathForSolution(solution: Solution, starts: Fix[]): Fix[] {
+    let path = [solution.lastFix];
+
+    let edge = solution.lastEdge;
+    while (edge.prevFix) {
+      path.push(edge.prevFix);
+      edge = this._map.get(edge.prevFix)!;
+    }
+
+    let firstAreaFix = path[path.length - 1]!;
+    assert(firstAreaFix);
+
+    let start = starts.slice()
+      .reverse()
+      .find(fix => fix.time < firstAreaFix.time)!;
+    assert(start);
+
+    path.push(start);
+
+    path.reverse();
+
+    return path;
   }
 
   private _edgeInfo(fix: Fix, legIndex: number): Edge {
@@ -325,10 +314,9 @@ export default class AreaTaskSolver {
   }
 }
 
-interface MaxDistanceData {
-  distance: number;
-  fix: Fix;
-  prevFix?: Fix;
+interface Solution {
+  lastFix: Fix;
+  lastEdge: Edge;
 }
 
 interface Edge {
