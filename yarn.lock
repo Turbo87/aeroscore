@@ -129,13 +129,13 @@
     "@turf/line-arc" "^5.1.5"
     "@turf/meta" "^5.1.5"
 
-"@turf/union@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@turf/union/-/union-6.0.2.tgz#6821d7842f048cfcfe1ae3b7c36fec73bd7e89cd"
+"@turf/union@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@turf/union/-/union-6.0.3.tgz#463b62d71c406f40a6978f560bfb92e88fe7db56"
   dependencies:
     "@turf/helpers" "6.x"
     "@turf/invariant" "6.x"
-    martinez-polygon-clipping "*"
+    martinez-polygon-clipping "^0.4.3"
 
 "@types/d3-dsv@^1.0.33":
   version "1.0.33"
@@ -2537,9 +2537,9 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-martinez-polygon-clipping@*:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/martinez-polygon-clipping/-/martinez-polygon-clipping-0.4.1.tgz#b34ec0440661f094173ad7e102672db31138df39"
+martinez-polygon-clipping@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/martinez-polygon-clipping/-/martinez-polygon-clipping-0.4.3.tgz#a3971ddf1da147104b5d0fbbf68f728bb62885c1"
   dependencies:
     splaytree "^0.1.4"
     tinyqueue "^1.2.0"
