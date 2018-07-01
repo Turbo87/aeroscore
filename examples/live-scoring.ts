@@ -1,12 +1,15 @@
 import {BBox} from 'cheap-ruler';
+import {parse as parseQS} from 'querystring';
+import {parse as parseURL} from 'url';
 
 import {formatDuration, formatTime} from '../src/format-result';
 import Point from '../src/geo/point';
 import GliderTrackerClient from '../src/glidertracker/client';
 import {Fix} from '../src/read-flight';
-import {readTask} from '../src/read-task';
+import {readTask, readTaskFromString} from '../src/read-task';
 import {
-  calculateDayFactors, calculateDayResult,
+  calculateDayFactors,
+  calculateDayResult,
   compareDayResults,
   createInitialDayResult,
   createIntermediateDayResult,
@@ -15,12 +18,27 @@ import {
 } from '../src/scoring';
 import AreaTaskSolver from '../src/task/solver/area-task-solver';
 import RacingTaskSolver from '../src/task/solver/racing-task-solver';
-import {readFromFile} from '../src/utils/filter';
+import Task from '../src/task/task';
+import {Competitor, parse as parseFilter, readFromFile} from '../src/utils/filter';
 
+const { fetch } = require('fetch-ponyfill')();
 const Table = require('cli-table3');
 const logUpdate = require('log-update');
 
-function run(argv: string[]) {
+function parseGliderTrackerURL(url: string): { tsk: string, lst: string } | undefined {
+  // e.g. http://glidertracker.org/
+  //      #tsk=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/task
+  //      &lst=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/filter
+  let { hash } = parseURL(url);
+  if (!hash) return;
+
+  let { tsk, lst } = parseQS(hash.slice(1));
+  if (!tsk || !lst) return;
+
+  return { tsk, lst };
+}
+
+async function run(argv: string[]) {
   let now = new Date();
   let day = now.getDate();
   let month = now.getMonth() + 1;
@@ -29,15 +47,32 @@ function run(argv: string[]) {
   let from = Date.parse(`${date}T00:00:00`);
   let to = Date.now();
 
-  if (argv.length < 4) {
+  let task: Task, filterRows: Competitor[];
+
+  if (argv[2] && argv[2].startsWith('http://glidertracker.org/')) {
+    let url = argv[2];
+    let urls = parseGliderTrackerURL(url);
+    if (!urls) {
+      console.log(`Invalid GliderTracker URL: ${url}`);
+      return process.exit(1);
+    }
+
+    let taskResponse = await fetch(urls.tsk);
+    let taskText = await taskResponse.text();
+    task = readTaskFromString(taskText);
+
+    let filterResponse = await fetch(urls.lst);
+    let filterText = await filterResponse.text();
+    filterRows = parseFilter(filterText);
+
+  } else if (argv.length < 4) {
     console.log('Usage: ts-node examples/live-scoring.ts TASK_PATH CSV_PATH');
-    process.exit(1);
+    return process.exit(1);
+
+  } else {
+    task = readTask(argv[2]);
+    filterRows = readFromFile(argv[3]);
   }
-
-  let taskPath = argv[2];
-  let task = readTask(taskPath);
-
-  let filterRows = readFromFile(argv[3]);
 
   let fixesById = new Map<string, Fix[]>();
   for (let filterRow of filterRows) {
