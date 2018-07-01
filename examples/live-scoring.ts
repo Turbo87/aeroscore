@@ -206,7 +206,7 @@ async function run(argv: string[]) {
         result._D ? `${result._D.toFixed(1)} km` : '',
         result._V ? `${result._V.toFixed(2)} km/h` : '',
         result.S,
-        result.altitude !== null ? `${result.altitude} m` : '',
+        result.altitude !== null ? `${Math.round(result.altitude)} m` : '',
       ]);
     });
 
