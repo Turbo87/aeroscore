@@ -175,7 +175,7 @@ async function run(argv: string[]) {
 
       let dayResult = (landed || result.completed || task.options.isAAT)
         ? createInitialDayResult(result, initialDayFactors, H)
-        : createIntermediateDayResult(result, initialDayFactors, H, task, Date.now());
+        : createIntermediateDayResult(result, initialDayFactors, H, task, Date.now() / 1000);
 
       return {...dayResult, landed, filterRow, startTimestamp, altitude};
     });
