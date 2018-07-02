@@ -28,7 +28,7 @@ export function readHandicapsFromFile(path: string): { [key: string]: number } {
   return handicaps;
 }
 
-interface Competitor {
+export interface Competitor {
   ognID: string;
   registration: string;
   callsign: string;
