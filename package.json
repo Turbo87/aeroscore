@@ -28,7 +28,7 @@
     "igc-parser": "^0.4.0",
     "monotone-convex-hull-2d": "^1.0.1",
     "tiny-emitter": "^2.0.2",
-    "xml-js": "^1.6.4"
+    "xml-js": "^1.6.7"
   },
   "devDependencies": {
     "@types/d3-dsv": "^1.0.33",
