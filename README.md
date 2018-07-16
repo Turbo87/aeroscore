@@ -27,6 +27,64 @@ ts-node examples/calc-ranking.ts fixtures/2017-07-17-lev
 ```
 
 
+Installation
+------------------------------------------------------------------------------
+To install aeroscore you need to install:
+
+GIT and curl
+```bash
+sudo apt-get install git curl
+```
+
+Node.js
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+```
+
+Yarn
+```bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+```
+
+Logout (exit) and back in again
+
+```bash
+yarn global add ts-node typescript
+```
+
+aeroscore
+```
+git clone https://github.com/Turbo87/aeroscore.git
+```
+
+Change into aeroscore directory and install dependencies
+```bash
+cd aeroscore
+yarn install
+```
+
+To check if you installation was successfull, run
+
+```bash
+ts-node examples/live-scoring.ts
+```
+
+Live-Scoring
+------------------------------------------------------------------------------
+You can use aeroscore to perform a live scoring of a running contest task. aeroscore can read a given task (XCSoar tsk format) and filter (Glidertracker.org fromat) to perform live scoring of the task.
+aeroscore connects to Glidertracker.org via WebSocket connection and continuously receives OGN data from the GliderTracker, which it evaluates into a live scoring.
+
+Live-scoring using local filter and task files can be started like this
+```bash
+ts-node examples/live-scoring.ts fixtures/Luesse/task.tsk fixtures/Luesse/filter.csv
+```
+
+Live-scoring using remote filter and task files directly from GliderTracker.org can be started like this
+```bash
+ts-node examples/live-scoring.ts "http://glidertracker.org/#tsk=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/task&lst=https://gist.github.com/hsteinhaus/4369987643f0081d49c4458baa8c1422/raw/filter"
+```
+
+
 License
 ------------------------------------------------------------------------------
 
