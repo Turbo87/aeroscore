@@ -145,9 +145,9 @@
   version "7946.0.4"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.4.tgz#4e049756383c3f055dd8f3d24e63fb543e98eb07"
 
-"@types/jest@^23.1.4":
-  version "23.1.4"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.1.4.tgz#71e1e2d08b1db742f479ee2795536ebc999a2419"
+"@types/jest@^23.3.0":
+  version "23.3.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.0.tgz#5dd70033b616a6228042244ebd992f6426808810"
 
 "@types/node@^6.0.83":
   version "6.0.83"
