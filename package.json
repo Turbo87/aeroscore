@@ -35,7 +35,7 @@
     "@types/geojson": "^7946.0.4",
     "@types/jest": "^23.3.0",
     "@types/node": "^6.0.83",
-    "cli-table3": "^0.5.0",
+    "cli-table3": "^0.5.1",
     "d3-dsv": "^1.0.8",
     "fetch-ponyfill": "^6.0.2",
     "jest": "^23.4.0",
