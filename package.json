@@ -39,7 +39,7 @@
     "cli-table3": "^0.5.1",
     "d3-dsv": "^1.0.8",
     "fetch-ponyfill": "^6.0.2",
-    "jest": "^23.4.0",
+    "jest": "^23.4.1",
     "log-update": "^2.3.0",
     "opn": "^5.3.0",
     "temp-write": "^3.4.0",
