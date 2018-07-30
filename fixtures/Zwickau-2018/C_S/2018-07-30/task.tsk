@@ -1,0 +1,32 @@
+<Task>
+  <Point type="Start">
+    <Waypoint name="AP Zwickau Ost A72 BAB011">
+      <Location longitude="12.586666666667" latitude="50.6825"/>
+    </Waypoint>
+    <ObservationZone type="Line" length="20000"/>
+  </Point>
+  <Point type="Turn">
+    <Waypoint name="Mittelsaida">
+      <Location longitude="13.305" latitude="50.763333333333"/>
+    </Waypoint>
+    <ObservationZone type="Keyhole"/>
+  </Point>
+  <Point type="Turn">
+    <Waypoint name="Schoeneck Bf">
+      <Location longitude="12.343333333333" latitude="50.395833333333"/>
+    </Waypoint>
+    <ObservationZone type="Keyhole"/>
+  </Point>
+  <Point type="Turn">
+    <Waypoint name="Sonneberg Bf">
+      <Location longitude="11.168333333333" latitude="50.355"/>
+    </Waypoint>
+    <ObservationZone type="Keyhole"/>
+  </Point>
+  <Point type="Finish">
+    <Waypoint name="Zwickau FP EDBI">
+      <Location longitude="12.459166666667" latitude="50.703333333333"/>
+    </Waypoint>
+    <ObservationZone type="Cylinder" radius="5000"/>
+  </Point>
+</Task>

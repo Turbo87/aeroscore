@@ -12,4 +12,9 @@ describe('XCSoar - TaskReader - read()', () => {
     let xml = fs.readFileSync(`${__dirname}/../../fixtures/2017-07-17-lev.tsk`, 'utf8');
     expect(read(xml)).toMatchSnapshot();
   });
+
+  it('reads "Zwickau" task correctly', () => {
+    let xml = fs.readFileSync(`${__dirname}/../../fixtures/Zwickau-2018/C_S/2018-07-30/task.tsk`, 'utf8');
+    expect(read(xml)).toMatchSnapshot();
+  });
 });

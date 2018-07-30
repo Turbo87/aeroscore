@@ -179,3 +179,84 @@ Object {
   "type": "RT",
 }
 `;
+
+exports[`XCSoar - TaskReader - read() reads "Zwickau" task correctly 1`] = `
+Object {
+  "aat_min_time": null,
+  "points": Array [
+    Object {
+      "observation_zone": Object {
+        "length": 20000,
+        "type": "Line",
+      },
+      "type": "Start",
+      "waypoint": Object {
+        "altitude": null,
+        "location": Object {
+          "latitude": 50.682500,
+          "longitude": 12.586667,
+        },
+        "name": "AP Zwickau Ost A72 BAB011",
+      },
+    },
+    Object {
+      "observation_zone": Object {
+        "type": "Keyhole",
+      },
+      "type": "Turn",
+      "waypoint": Object {
+        "altitude": null,
+        "location": Object {
+          "latitude": 50.763333,
+          "longitude": 13.305000,
+        },
+        "name": "Mittelsaida",
+      },
+    },
+    Object {
+      "observation_zone": Object {
+        "type": "Keyhole",
+      },
+      "type": "Turn",
+      "waypoint": Object {
+        "altitude": null,
+        "location": Object {
+          "latitude": 50.395833,
+          "longitude": 12.343333,
+        },
+        "name": "Schoeneck Bf",
+      },
+    },
+    Object {
+      "observation_zone": Object {
+        "type": "Keyhole",
+      },
+      "type": "Turn",
+      "waypoint": Object {
+        "altitude": null,
+        "location": Object {
+          "latitude": 50.355000,
+          "longitude": 11.168333,
+        },
+        "name": "Sonneberg Bf",
+      },
+    },
+    Object {
+      "observation_zone": Object {
+        "radius": 5000,
+        "type": "Cylinder",
+      },
+      "type": "Finish",
+      "waypoint": Object {
+        "altitude": null,
+        "location": Object {
+          "latitude": 50.703333,
+          "longitude": 12.459167,
+        },
+        "name": "Zwickau FP EDBI",
+      },
+    },
+  ],
+  "type": "RT",
+}
+`;

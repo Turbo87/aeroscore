@@ -2,7 +2,7 @@ import {Element, xml2js} from 'xml-js';
 
 export interface XCSoarTask {
   type: string;
-  aat_min_time: number; // seconds
+  aat_min_time: number | null; // seconds
   points: XCSoarPoint[];
 }
 
@@ -13,8 +13,8 @@ export interface XCSoarPoint {
 }
 
 export interface XCSoarWaypoint {
-  name: string;
-  altitude: number; // meters
+  name: string | null;
+  altitude: number | null; // meters
   location: XCSoarLocation;
 }
 
@@ -36,22 +36,25 @@ export function read(xml: string): XCSoarTask {
 }
 
 function convertTask(xml: any): XCSoarTask {
-  let type = xml.attributes.type;
-  let aat_min_time = parseInt(xml.attributes.aat_min_time, 10);
+  let attrs = xml.attributes || {};
+  let type = attrs.type || 'RT';
+  let aat_min_time = 'aat_min_time' in attrs ? parseInt(attrs.aat_min_time, 10) : null;
   let points = xml.elements.filter((it: any) => it.name === 'Point').map(convertPoint);
   return { type, aat_min_time, points };
 }
 
 function convertPoint(xml: any): XCSoarPoint {
-  let type = xml.attributes.type;
+  let attrs = xml.attributes || {};
+  let type = attrs ? attrs.type : 'Turn';
   let waypoint = convertWaypoint(xml.elements.find((it: any) => it.name === 'Waypoint'));
   let observation_zone = convertObservationZone(xml.elements.find((it: any) => it.name === 'ObservationZone'));
   return { type, waypoint, observation_zone };
 }
 
 function convertWaypoint(xml: any): XCSoarWaypoint {
-  let name = xml.attributes.name;
-  let altitude = parseFloat(xml.attributes.altitude);
+  let attrs = xml.attributes || {};
+  let name = attrs.name || null;
+  let altitude = 'altitude' in attrs ? parseFloat(attrs.altitude) : null;
   let location = convertLocation(xml.elements.find((it: any) => it.name === 'Location'));
   return { name, altitude, location };
 }
