@@ -52,7 +52,7 @@ export function readTaskFromString(str: string): Task {
 
   return new Task(points, {
     isAAT: task.type === 'AAT',
-    aatMinTime: task.aat_min_time,
+    aatMinTime: task.aat_min_time || 0,
   });
 }
 
