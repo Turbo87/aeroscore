@@ -138,8 +138,8 @@
     martinez-polygon-clipping "^0.4.3"
 
 "@types/d3-dsv@^1.0.33":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.0.34.tgz#b7b3c75653a31b1e2555c9c0300a6eaf12a5b6fd"
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.0.35.tgz#eeb884bfbaa6775daa41ebd2dc8c07a24505f311"
 
 "@types/geojson@^7946.0.4":
   version "7946.0.4"
