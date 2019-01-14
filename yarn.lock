@@ -3649,8 +3649,8 @@ ws@^6.0.0:
     async-limiter "~1.0.0"
 
 xml-js@^1.6.7:
-  version "1.6.8"
-  resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.6.8.tgz#e06419c54235f18f4c2cdda824cbd65a782330de"
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.6.9.tgz#6e516ce53c64ea0043cbc6ee8500e5d693602757"
   dependencies:
     sax "^1.2.4"
 
