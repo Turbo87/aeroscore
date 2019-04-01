@@ -41,7 +41,7 @@
     "fetch-ponyfill": "^6.0.2",
     "jest": "^24.1.0",
     "log-update": "^3.0.0",
-    "opn": "^5.3.0",
+    "opn": "^6.0.0",
     "temp-write": "^3.4.0",
     "ts-jest": "^24.0.0",
     "tslint": "^5.11.0",
