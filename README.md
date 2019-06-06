@@ -76,7 +76,7 @@ aeroscore connects to Glidertracker.org via WebSocket connection and continuousl
 
 Live-scoring using local filter and task files can be started like this
 ```bash
-ts-node examples/live-scoring.ts fixtures/Luesse/task.tsk fixtures/Luesse/filter.csv
+ts-node examples/live-scoring.ts fixtures/Bayreuth/2018-05-30/Open/task.tsk fixtures/Bayreuth/2018-05-30/Open/filter.csv
 ```
 
 Live-scoring using remote filter and task files directly from GliderTracker.org can be started like this
