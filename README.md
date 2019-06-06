@@ -63,7 +63,7 @@ cd aeroscore
 yarn install
 ```
 
-To check if you installation was successfull, run
+To check if you installation was successful, run
 
 ```bash
 ts-node examples/live-scoring.ts
