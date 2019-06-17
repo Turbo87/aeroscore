@@ -7,7 +7,7 @@ export function viewGeoJSON(json: any) {
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"/>
   <style>
   body { margin: 0; }
-  #mapid { height: 180px; }
+  #mapid { height: 100%; }
   </style>
 </head>
 <body id="map">
