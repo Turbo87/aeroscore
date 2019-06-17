@@ -141,7 +141,7 @@ function tick() {
       `${!result.landed || !result.completed || result.aat_min_time_exceeded ? ' ' : '*' } ` +
       `${result.T ? formatDuration(result.T) : ''}`,
       result._D ? `${result._D.toFixed(1)} km` : '',
-      result._V ? `${result._V.toFixed(2)} km/h` : '',
+      result.V ? `${result.V.toFixed(2)} km/h` : '',
       result.S,
       result.altitude !== null ? `${result.altitude} m` : '',
     ]);

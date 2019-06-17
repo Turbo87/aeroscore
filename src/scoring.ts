@@ -61,9 +61,11 @@ export function createInitialDayResult(result: any, dayFactors: InitialDayFactor
   // Finisher’s Display Time [s]
   T = _T = result.time;
 
-  // Finisher’s Marking Speed. (V = D / T)
   // Finisher’s Display Speed.
-  V = _V = completed ? D / (T / 3600) : 0;
+  _V = completed ? D / (T / 3600) : 0;
+
+  // Finisher’s Marking Speed.
+  V = completed ? result.speed : 0;
 
   // Competitor’s Handicapped Distance. (Dh = D x Ho / H) [km]
   let Dh = D * (Ho / H) || 0;
