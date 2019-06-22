@@ -6,13 +6,19 @@ import {readTask} from '../src/read-task';
 import {taskToGeoJSON} from '../src/task-to-geojson';
 import {viewGeoJSON} from './utils/view-geojson';
 
-let task = readTask(`${__dirname}/../fixtures/2017-07-17-lev.tsk`);
-let flight = readFlight(`${__dirname}/../fixtures/2017-07-17-lev/ZG_77hv6ci1.igc`);
+if (process.argv.length < 4) {
+  console.log('Usage: ts-node examples/show-flights.ts TASK_PATH IGC_PATH');
+  process.exit(1);
+}
+
+let taskPath = process.argv[2];
+let task = readTask(taskPath);
+
+let flightPath = process.argv[3];
+let flight = readFlight(flightPath);
 let result = analyzeFlight(flight, task);
 
 let json = taskToGeoJSON(task);
 json.features.push(turf.lineString(flight.map(it => it.coordinate), { color: 'red', opacity: 0.85 }));
 
-if (process.argv.indexOf('--view') !== -1) {
-  viewGeoJSON(json);
-}
+viewGeoJSON(json);
