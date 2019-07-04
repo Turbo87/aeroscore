@@ -2,6 +2,7 @@
 
 exports[`AreaTaskSolver 2017-07-15-lev - 1 final result 1`] = `
 Object {
+  "aat_min_time_exceeded": false,
   "completed": true,
   "distance": 251207.33,
   "path": Array [
@@ -49,6 +50,7 @@ Object {
 
 exports[`AreaTaskSolver 2017-07-15-lev - P9 final result 1`] = `
 Object {
+  "aat_min_time_exceeded": true,
   "completed": true,
   "distance": 299195.36,
   "path": Array [
@@ -96,6 +98,7 @@ Object {
 
 exports[`AreaTaskSolver 2017-07-15-lev - SW 2017-07-15T12:00:00Z 1`] = `
 Object {
+  "aat_min_time_exceeded": false,
   "completed": false,
   "distance": 71060.548,
   "path": Array [
@@ -125,6 +128,7 @@ Object {
 
 exports[`AreaTaskSolver 2017-07-15-lev - SW final result 1`] = `
 Object {
+  "aat_min_time_exceeded": true,
   "completed": true,
   "distance": 227163.36,
   "path": Array [
@@ -172,6 +176,7 @@ Object {
 
 exports[`AreaTaskSolver 2017-07-15-lev - XN final result 1`] = `
 Object {
+  "aat_min_time_exceeded": false,
   "completed": false,
   "distance": 124525.47,
   "path": Array [
@@ -207,6 +212,7 @@ Object {
 
 exports[`AreaTaskSolver 2017-07-15-lev - ZG final result 1`] = `
 Object {
+  "aat_min_time_exceeded": false,
   "completed": false,
   "distance": 43099.650,
   "path": Array [
