@@ -207,10 +207,13 @@ export default class AreaTaskSolver {
         ? this.task.options.aatMinTime
         : time;
 
+      let aat_min_time_exceeded = time > this.task.options.aatMinTime;
+
       // calculate marking speed
       let speed = (distance / 1000) / (scoringTime / 3600);
 
       return {
+        aat_min_time_exceeded,
         completed,
         time,
         distance,
@@ -222,6 +225,7 @@ export default class AreaTaskSolver {
     // if we don't have data yet we can't return anything useful
     if (!this.bestSolution) {
       return {
+        aat_min_time_exceeded: false,
         completed: false,
         time: undefined,
         distance: undefined,
@@ -240,10 +244,13 @@ export default class AreaTaskSolver {
     // calculate current marking time
     let time = (this._lastFix!.time - path[0].time) / 1000;
 
+    let aat_min_time_exceeded = time > this.task.options.aatMinTime;
+
     // calculate current marking speed
     let speed = (distance / 1000) / (time / 3600);
 
     return {
+      aat_min_time_exceeded,
       completed,
       time,
       distance,
