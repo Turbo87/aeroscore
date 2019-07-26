@@ -1,6 +1,6 @@
 {
   "name": "aeroscore",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Gliding Competition Scoring",
   "main": "index.js",
   "repository": "https://github.com/Turbo87/aeroscore",
