@@ -1728,9 +1728,10 @@ igc-filename-parser@^0.1.1:
   dependencies:
     flight-recorder-manufacturers "^1.0.1"
 
-igc-parser@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/igc-parser/-/igc-parser-0.4.0.tgz#6139d345c8429e3b2920168c0eb34fb0e8f5268f"
+igc-parser@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/igc-parser/-/igc-parser-0.5.0.tgz#57d3e8781cd2984cc5a357dc7cdeb9389a447232"
+  integrity sha512-XpuPcl7MTu3H+FPjOpH21AQhZWOeaqFpk/T5M5r63ROxRpLF9idgb6SS7/NyQHXOe1L1pdgDKIErKfkxqp90OA==
   dependencies:
     flight-recorder-manufacturers "^1.0.1"
 
