@@ -33,7 +33,7 @@
     "xml-js": "^1.6.7"
   },
   "devDependencies": {
-    "@types/d3-dsv": "^1.0.33",
+    "@types/d3-dsv": "^2.0.0",
     "@types/geojson": "^7946.0.4",
     "@types/jest": "^25.1.1",
     "@types/node": "^6.0.83",
